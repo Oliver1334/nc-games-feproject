@@ -20,3 +20,11 @@ export const fetchCats = () => {
     })
 }
 
+export const getReviewById = (id) => {
+
+    return ncGamesApi.get(`/reviews/${id}`)
+    .then((result) => {
+        console.log(result)
+        return result.data.review
+    })
+}
