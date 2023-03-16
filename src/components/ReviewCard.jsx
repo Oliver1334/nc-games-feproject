@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 
 const ReviewCard = ({ review }) => {
 
-    const { category, comment_count, created_at, designer, owner, review_img_url, title, votes} = review;
+    const { category, comment_count, created_at, designer, owner, review_img_url, title, votes, review_id} = review;
     return (
         <li>
             <article>
@@ -14,7 +14,9 @@ const ReviewCard = ({ review }) => {
                 <h4>Votes: {votes}</h4>
                 <h4>Comments: {comment_count}</h4>
                 <div>
+                <Link to={`/reviews/${review_id}`}>
                 <button>Read Review</button>
+                </Link>
                 </div>
             </article>
         </li>
