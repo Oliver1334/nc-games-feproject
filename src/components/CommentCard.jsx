@@ -2,6 +2,10 @@
 
 const CommentCard = ({ comment }) => {
 
+    if (!comment) {
+        return <li>Invalid Comment</li>; // Placeholder or error message
+      }
+
     const {comment_id, body, review_id, author, votes, created_at} = comment;
 
 

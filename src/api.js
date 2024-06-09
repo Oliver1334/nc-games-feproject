@@ -24,8 +24,8 @@ export const getReviewById = (id) => {
 };
 
 export const getCommentsById = (id) => {
-  return ncGamesApi.get(`/reviews/${id}/comments`).then(({ data }) => {
-    return data.comments;
+  return ncGamesApi.get(`/reviews/${id}/comments`).then((res) => {
+    return res.data;
   });
 };
 
@@ -39,7 +39,7 @@ export const postCommentHandler = ({ review_id, user, inputComment }) => {
     })
     .then((res) => {
       console.log(res);
-      return res.data[0];
+      return res.data.comment;
     })
     .catch((err) => {
       console.log(err, "<err");
