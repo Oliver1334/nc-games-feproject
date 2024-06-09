@@ -9,15 +9,36 @@ const CommentList = (passed_id) => {
   const [inputComment, setInputComment] = useState("");
   const [commentError, setCommentError] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [reloadKey, setReloadKey] = useState(0); // Key to force component re-render
+  // const [loading, setLoading] = useState(true);
   const user = "jessjelly"
 
   console.log(comments);
 
+  // useEffect(() => {
+  //   getCommentsById(review_id).then((data) => {
+  //     setComments(data);
+  //     // setLoading(false);
+  //   });
+  // }, [review_id]);
+
   useEffect(() => {
-    getCommentsById(review_id).then((results) => {
-      setComments(results);
-    });
-  }, [review_id]);
+    // Function to fetch comments
+    const fetchComments = async () => {
+      try {
+        const data = await getCommentsById(review_id);
+        setComments(data.comments); // Set comments state with fetched data
+        setIsLoading(false); // Set loading to false after data is fetched
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+        setComments([]); // If there's an error, set comments to an empty array
+        setIsLoading(false); // Set loading to false on error
+      }
+    };
+
+    fetchComments(); // Call the fetchComments function on component mount
+  }, [review_id, reloadKey]);
 
   const typeComment = (event) => {
     setCommentError(false);
@@ -34,6 +55,7 @@ const CommentList = (passed_id) => {
         (returnedComment) => {
           setButtonDisabled(false);
           setInputComment("");
+          setReloadKey(reloadKey + 1);
           setComments((currentComments) => {
             return [returnedComment, ...currentComments];
           });
@@ -42,7 +64,9 @@ const CommentList = (passed_id) => {
     }
   };
 
-  if (!comments) return <p>Loading...</p>;
+  if (!Array.isArray(comments)) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="comments">
@@ -79,6 +103,7 @@ const CommentList = (passed_id) => {
       <section id="comment-list">
         <ul value={comments.length}>
           {comments.map((element) => {
+            console.log(element)
             return <CommentCard key={element.comment_id} comment={element} />;
           })}
         </ul>
@@ -86,5 +111,6 @@ const CommentList = (passed_id) => {
     </div>
   );
 };
+
 
 export default CommentList;
