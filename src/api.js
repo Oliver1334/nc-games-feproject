@@ -29,6 +29,12 @@ export const getCommentsById = (id) => {
   });
 };
 
+export const signInHandler = (username) => {
+  return ncGamesApi.get(`/users`).then((res) => {
+    return res.data
+  })
+}
+
 export const postCommentHandler = ({ review_id, user, inputComment }) => {
   console.log(user)
   console.log(review_id)
