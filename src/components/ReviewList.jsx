@@ -23,7 +23,7 @@ if (!reviews) return <p>Loading...</p>
             })}
            </ul>
         </section>
-    )
+    ) 
 }
 
 export default ReviewList;
