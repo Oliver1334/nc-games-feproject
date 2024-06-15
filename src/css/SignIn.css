@@ -1,0 +1,19 @@
+.login-box {
+    background-color: #ED4D00;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    border-radius: 10px;
+}
+
+
+@media screen  and (max-width: 500px) {
+    .login-box {
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+    
+    
+}

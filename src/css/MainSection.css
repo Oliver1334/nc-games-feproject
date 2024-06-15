@@ -1,0 +1,65 @@
+.user-greeting {
+    text-align: right;
+    margin-right: 1vw;
+    font-weight: bold;
+    font-size:large;
+
+
+}
+
+.user-homepage {
+    text-align: right;
+    margin-right: 1vw;
+    font-weight: bold;
+    font-size:large;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    align-items:baseline;
+}
+.homepage-avatar {
+    width: 30px;
+    height: 30px;
+    padding-right: 1vw;
+    margin-top: 1vh;
+    
+    
+}
+
+.homeEditorWrapper {
+    background-color: #A0938E;
+    background-color: white;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.homeEditorWrapper > h2 {
+    color: #fff;
+    color: black;
+    text-align: left;
+    padding-left: 1vw;
+    padding-bottom:0.5vw;
+    border-bottom: 1px solid
+}
+
+#home-read-more {
+    color: black;
+}
+
+#home-read-more:hover {
+    color: #ED4D00
+}
+.homeCarouselWrapper {
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+  }
+
+@media screen and (max-width: 768px) {
+    .homeCarouselWrapper{
+    width: 100%
+    }
+}
+.carousel {
+    width: 10vw
+}
