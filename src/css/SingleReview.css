@@ -1,0 +1,49 @@
+.single-article {
+    position: absolute;
+    padding-top: 3vh;
+    margin-left: 10vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-right: 10vw;
+    border-color: grey;
+    border-width: 1px;
+    border-style: solid;
+    border-top: none;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .single-article {
+        margin: none;
+        border: none;
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}
+
+.single-article > h2 {
+    text-align: left;
+}
+.single-article > p {
+    text-align: left;
+}
+
+.single-image {
+    max-width: 80vw;
+}
+.article-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.creator-data {
+    font-weight: bold;
+}
+.date {
+    font-style: italic;
+}
+
+
+
+  

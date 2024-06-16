@@ -1,0 +1,25 @@
+.comment-card {
+    /* box-shadow: rgb(234, 234, 234) 20px 25px 20px -20px; */
+    border-style: solid;
+    border: border-box;
+    border-color: rgb(204, 204, 204);
+    border-width: 0.5px;
+    border-radius: 10px;
+    padding-bottom: 1vh;
+    padding-left: 2vw;
+    padding-right:1vw;
+    padding-top: 0.5vh;
+    background-color: white;
+    /* margin-right: 2vw;
+    justify-content: top; */
+
+}
+
+.comment-author {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#comment-info {
+    font-style: italic;
+}
