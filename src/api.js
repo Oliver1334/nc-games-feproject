@@ -31,7 +31,7 @@ export const getCommentsById = (id) => {
 
 export const signInHandler = (username) => {
   return ncGamesApi.get(`/users`).then((res) => {
-    return res.data
+    return res.data.users
   })
 }
 
