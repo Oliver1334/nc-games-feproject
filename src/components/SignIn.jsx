@@ -37,16 +37,23 @@ export const SignIn = () => {
       return setPasswordErr(true);
     }
     signInHandler(inputUsername).then((users) => {
-      users.map((user) => {
-        if (user.username === inputUsername) {
-          setLoadSignin(false);
-          return setUser(user);
-        } else {
-          setLoadSignin(false);
-          return setUsernameErr(true);
-        }
+const foundUser = users.find((user) => user.username === inputUsername)
+      if (foundUser) {
+        setLoadSignin(false);
+        setUser(foundUser);
+      } else {
+        setLoadSignin(false);
+        setUsernameErr(true);
+      }
+      // users.map((user) => {
+      //   if (user.username === inputUsername) {
+      //     setLoadSignin(false);
+      //     return setUser(user);
+      //   } else {
+      //     setLoadSignin(false);
+      //     return setUsernameErr(true);
+      //   }
       });
-    });
   };
   return (
     <div>
