@@ -1,0 +1,27 @@
+.comments > ul {
+    display: grid;
+    padding-right: 2vw;
+    align-items: auto;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 10px;
+    list-style-type: none;
+  }
+  
+  .comment-card {
+    text-align: left;
+  }
+
+
+
+  .comments {
+    background-color: lightgray;
+
+    padding-top: 2vw;
+    border-radius: 10px;
+    margin-top: 1vh;
+  }
+
+  @media screen and (max-width: 768px) {
+   
+    
+  }

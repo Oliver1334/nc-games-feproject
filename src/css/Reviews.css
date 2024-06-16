@@ -1,0 +1,43 @@
+.listed-articles {
+    max-width: 1920px;
+    margin: 10px, 10px, 10px, 10px;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    list-style-type: none;
+    align-items: auto;
+  }
+  .article-card {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    align-items: center;
+    background-color: #fff;
+    display: grid;
+    position: relative;
+    margin: 15px 15px 15px 0;
+    box-shadow: rgb(234, 234, 234) 0px 25px 20px -20px;
+  }
+  .article-card-img {
+    max-width: 29vw;
+    max-height: 20vh;
+  }
+  .readmore {
+    color: #ED4D00;
+    text-decoration: underline;
+  }
+  
+  
+  .article-nav {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0.5vw;
+    padding-left: 0.95vw;
+    align-items: center;
+  
+  }
