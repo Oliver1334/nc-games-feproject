@@ -45,14 +45,6 @@ const foundUser = users.find((user) => user.username === inputUsername)
         setLoadSignin(false);
         setUsernameErr(true);
       }
-      // users.map((user) => {
-      //   if (user.username === inputUsername) {
-      //     setLoadSignin(false);
-      //     return setUser(user);
-      //   } else {
-      //     setLoadSignin(false);
-      //     return setUsernameErr(true);
-      //   }
       });
   };
   return (
