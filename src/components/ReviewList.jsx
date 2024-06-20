@@ -24,7 +24,7 @@ export const Reviews = () => {
 
   useEffect(() => {
     setLoading(true);
-    categorySelectHandler(selectedTopic)
+    categorySelectHandler(selectedCategory)
       .then((data) => {
         setCategory(data);
         setLoading(false);
@@ -38,10 +38,10 @@ export const Reviews = () => {
     return (
       <div className="articles">
         <div className="article-nav">
-          <h2>Articles</h2>
+          <h2>Reviews</h2>
           <form className="topic-selector">
             <label htmlFor="topic-dropdown">Search by Topic: </label>
-            <select id="topic-dropdown" onChange={handleTopic}>
+            <select id="topic-dropdown" onChange={handleCategory}>
               <option key="All">All</option>
               <option key="strategy" value="strategy">
                 Strategy
@@ -69,7 +69,7 @@ export const Reviews = () => {
         </div>
 
         <ul className="listed-articles">
-          {topic.map((review) => {
+          {category.map((review) => {
             return (
               <li key={ReviewCard.review_id} className="article-card">
                 <ReviewCard review={review} />

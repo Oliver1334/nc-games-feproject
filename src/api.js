@@ -3,6 +3,13 @@ const ncGamesApi = axios.create({
   baseURL: "https://nc-games-2kfx.onrender.com/api",
 });
 
+export const categorySelectHandler = (selectedCategory) => {
+  const query = selectedCategory === 'All' ? '' : `?category=${selectedCategory}`;
+  return ncGamesApi.get('/reviews' + query).then((res) => {
+    return res.data.reviews
+  })
+}
+
 export const fetchReviews = (category = null) => {
   const filterURL = category ? `?category=${category}` : "";
 
