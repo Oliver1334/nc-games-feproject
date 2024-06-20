@@ -10,11 +10,11 @@ import { useContext, useState, useEffect } from "react";
 import { categorySelectHandler } from "../api";
 import { CategoryContext } from "../contexts/CategoryContext";
 import ReviewCard from "./ReviewCard";
-import Loading from "./Loading";
-import "../css/Articles.css";
+import { Loading } from "./Loading";
+import "../css/Reviews.css";
 
 export const Reviews = () => {
-  const { category, setCategory } = useContext(TopicContext);
+  const { category, setCategory } = useContext(CategoryContext);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
