@@ -5,8 +5,8 @@
 // const ReviewList = ({category}) => {
 // const [reviews, setReviews] = useState(null)
 
-import React from "react";
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; 
 import { categorySelectHandler } from "../api";
 import { CategoryContext } from "../contexts/CategoryContext";
 import ReviewCard from "./ReviewCard";
@@ -16,10 +16,19 @@ import "../css/Reviews.css";
 export const Reviews = () => {
   const { category, setCategory } = useContext(CategoryContext);
   const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const handleCategory = (event) => {
-    setSelectedCategory(event.target.value);
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  const getCategoryFromUrl = () => {
+    const params = new URLSearchParams(location.search);
+    return params.get("category") || "All"; };
+    
+    const [selectedCategory, setSelectedCategory] = useState(getCategoryFromUrl());
+ 
+    const handleCategory = (event) => {
+    const newCategory = event.target.value;
+    setSelectedCategory(newCategory);
+    navigate(`/reviews?category=${newCategory}`, {replace: true});
   };
 
   useEffect(() => {
@@ -41,7 +50,7 @@ export const Reviews = () => {
           <h2>Reviews</h2>
           <form className="topic-selector">
             <label htmlFor="topic-dropdown">Search by Topic: </label>
-            <select id="topic-dropdown" onChange={handleCategory}>
+            <select id="topic-dropdown" value={selectedCategory} onChange={handleCategory}>
               <option key="All">All</option>
               <option key="strategy" value="strategy">
                 Strategy
