@@ -1,5 +1,11 @@
 .listed-articles {
-    max-width: 1920px;
+  max-width: 1920px;
+  margin: 10px auto; /* Center align and adjust margin */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px; /* Adjust gap between grid items */
+  list-style-type: none;
+    /* max-width: 1920px;
     margin: 10px, 10px, 10px, 10px;
     display: grid;
     grid-template-rows: repeat(4, 1fr);
@@ -7,10 +13,16 @@
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     list-style-type: none;
-    align-items: auto;
+    align-items: auto; */
   }
   .article-card {
-    padding-top: 1vh;
+    padding: 20px; /* Adjust padding as per your design */
+    background-color: #fff;
+    border: 1px solid #ccc; /* Add a border for separation */
+    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
+    margin-bottom: 20px; /* Adjust margin between cards */
+    /* padding-top: 1vh;
     padding-bottom: 1vh;
     padding-right: 1vw;
     padding-left: 1vw;
@@ -19,11 +31,17 @@
     display: grid;
     position: relative;
     margin: 15px 15px 15px 0;
-    box-shadow: rgb(234, 234, 234) 0px 25px 20px -20px;
+    box-shadow: rgb(234, 234, 234) 0px 25px 20px -20px; */
   }
   .article-card-img {
-    max-width: 29vw;
-    max-height: 20vh;
+    width: 100%; /* Ensure image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Set a maximum height if necessary */
+    object-fit: cover; /* Scale the image while maintaining aspect ratio */
+    border-top-left-radius: 8px; /* Optional: Rounded corners */
+    border-top-right-radius: 8px; /* Optional: Rounded corners */
+    /* max-width: 29vw;
+    max-height: 20vh; */
   }
   .readmore {
     color: #ED4D00;
