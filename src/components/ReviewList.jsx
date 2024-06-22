@@ -1,9 +1,3 @@
-// import {useEffect, useState} from 'react';
-// import {fetchReviews} from '../api'
-// import ReviewCard from './ReviewCard'
-
-// const ReviewList = ({category}) => {
-// const [reviews, setReviews] = useState(null)
 
 import React, { useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; 
@@ -16,30 +10,34 @@ import "../css/Reviews.css";
 export const Reviews = () => {
   const { category, setCategory } = useContext(CategoryContext);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortOption, setSortOption] = useState("created_at");
+  const [order, setOrder] = useState("ASC");
+
   const location = useLocation();
   const navigate = useNavigate();
-  
-  const getCategoryFromUrl = () => {
-    const params = new URLSearchParams(location.search);
-    return params.get("category") || "All"; };
-    
-    const [selectedCategory, setSelectedCategory] = useState(getCategoryFromUrl());
- 
-    const handleCategory = (event) => {
-    const newCategory = event.target.value;
-    setSelectedCategory(newCategory);
-    navigate(`/reviews?category=${newCategory}`, {replace: true});
-  };
 
-  useEffect(() => {
-    setLoading(true);
-    categorySelectHandler(selectedCategory)
-      .then((data) => {
-        setCategory(data);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, [selectedCategory, setCategory]);
+useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  const categoryParam = params.get("category") || "All";
+  const sortParam = params.get("sort_by") || "created_at";
+  const orderParam = params.get("order") || "ASC";
+
+  setSelectedCategory(categoryParam);
+  setSortOption(sortParam);
+  setOrder(orderParam);
+
+  setLoading(true);
+  categorySelectHandler(categoryParam, sortParam, orderParam)
+  .then((data) => {
+    setCategory(data);
+    setLoading(false);
+  })
+  .catch((err) => console.log(err));
+}, [location.search, setCategory]);
+
+  
+  
 
   if (loading === true) {
     return <Loading />;
