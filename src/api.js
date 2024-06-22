@@ -3,12 +3,18 @@ const ncGamesApi = axios.create({
   baseURL: "https://nc-games-2kfx.onrender.com/api",
 });
 
-export const categorySelectHandler = (selectedCategory) => {
-  const query = selectedCategory === 'All' ? '' : `?category=${selectedCategory}`;
-  return ncGamesApi.get('/reviews' + query).then((res) => {
-    return res.data.reviews
-  })
-}
+export const categorySelectHandler = (selectedCategory, sort, order) => {
+  const defaultSort = "created_at";
+  const defaultOrder = "DESC";
+
+  let query = selectedCategory === "All" ? "" : `?category=${selectedCategory}`;
+  query += `${query ? "&" : "?"}sort_by=${sort || defaultSort}`;
+  query += `${query ? "&" : "?"}order=${order || defaultOrder}`;
+
+  return ncGamesApi.get("/reviews" + query).then((res) => {
+    return res.data.reviews;
+  });
+};
 
 export const fetchReviews = (category = null) => {
   const filterURL = category ? `?category=${category}` : "";
@@ -38,15 +44,16 @@ export const getCommentsById = (id) => {
 
 export const signInHandler = (username) => {
   return ncGamesApi.get(`/users`).then((res) => {
-    return res.data.users
-  })
-}
+    return res.data.users;
+  });
+};
 
 export const postCommentHandler = ({ review_id, user, inputComment }) => {
-  console.log(user)
-  console.log(review_id)
-  console.log(inputComment)
-  return ncGamesApi.post(`/reviews/${review_id}/comments`, {
+  console.log(user);
+  console.log(review_id);
+  console.log(inputComment);
+  return ncGamesApi
+    .post(`/reviews/${review_id}/comments`, {
       username: user,
       body: inputComment,
     })
