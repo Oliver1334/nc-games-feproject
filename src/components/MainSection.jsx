@@ -13,27 +13,6 @@ import { UseContext, UserContext } from "../contexts/UserContext";
 import { ReviewsCarousel } from "./ReviewsCarousel";
 
 const MainSection = () => {
-  //     const [category, setCategory] = useState("")
-  //     const { pathname } = useResolvedPath();
-
-  // return (
-  //     <main>
-  //          {pathname === "/" ? (
-  //     <div id="category-selector">
-  //         <CatFilter setCategory={setCategory} />
-  //     </div>
-  //  ) : (
-  //     ""
-  // )}
-
-  //         <Routes>
-  //         <Route path="/signin" element={<SignIn />} />
-  //         <Route path="/account" element={<AccountPage />} />
-  //             <Route path="/" element={<ReviewList category={category} />}/>
-  //             <Route path="/reviews/:review_id" element={<ViewReview />} />
-  //         </Routes>
-  //     </main>
-  // )
 
   const slides = [
     {
@@ -97,3 +76,26 @@ const MainSection = () => {
 export default MainSection;
 
 // Hello
+
+
+  //     const [category, setCategory] = useState("")
+  //     const { pathname } = useResolvedPath();
+
+  // return (
+  //     <main>
+  //          {pathname === "/" ? (
+  //     <div id="category-selector">
+  //         <CatFilter setCategory={setCategory} />
+  //     </div>
+  //  ) : (
+  //     ""
+  // )}
+
+  //         <Routes>
+  //         <Route path="/signin" element={<SignIn />} />
+  //         <Route path="/account" element={<AccountPage />} />
+  //             <Route path="/" element={<ReviewList category={category} />}/>
+  //             <Route path="/reviews/:review_id" element={<ViewReview />} />
+  //         </Routes>
+  //     </main>
+  // )

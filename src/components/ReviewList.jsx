@@ -3,9 +3,10 @@ import React, { useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; 
 import { categorySelectHandler } from "../api";
 import { CategoryContext } from "../contexts/CategoryContext";
-import ReviewCard from "./ReviewCard";
+import { ReviewCard } from "./ReviewCard";
 import { Loading } from "./Loading";
 import "../css/Reviews.css";
+import "../css/App.css"
 
 export const Reviews = () => {
   const { category, setCategory } = useContext(CategoryContext);
@@ -102,7 +103,7 @@ const handleOrderChange = (event) => {
         <ul className="listed-articles">
           {category.map((review) => {
             return (
-              <li key={ReviewCard.review_id} className="article-card">
+              <li key={review.review_id} className="article-card">
                 <ReviewCard review={review} />
               </li>
             );
@@ -113,13 +114,6 @@ const handleOrderChange = (event) => {
   }
 };
 
-// useEffect(() => {
-//     fetchReviews(category).then((results) => {
-//         setReviews(results);
-//     });
-// }, [reviews]);
-
-// if (!reviews) return <p>Loading...</p>
 
 //     return (
 //         <section id="review-list">
