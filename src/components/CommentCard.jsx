@@ -1,26 +1,24 @@
+import React from "react";
 
+const CommentCard = ({ comment, onDelete }) => {
+  if (!comment) {
+    return <li>Invalid Comment</li>;
+  }
 
-const CommentCard = ({ comment }) => {
+  const { comment_id, body, author, votes } = comment;
 
-    if (!comment) {
-        return <li>Invalid Comment</li>; // Placeholder or error message
-      }
-
-    const {comment_id, body, review_id, author, votes, created_at} = comment;
-
-
-return (
-    <li>
-        <article>
-            <h3>{body}</h3>
-            <h3>Posted by: {author}</h3>
-            <h3>Votes: {votes}</h3>
-        </article>
+  return (
+    <li key={comment_id}>
+      <article>
+        <h3>{body}</h3>
+        <h3>Posted by: {author}</h3>
+        <h3>Votes: {votes}</h3>
+        {onDelete && (
+          <button onClick={() => onDelete(comment_id)}>Delete</button>
+        )}
+      </article>
     </li>
-)
-
-
-}
-
+  );
+};
 
 export default CommentCard;

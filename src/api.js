@@ -16,11 +16,10 @@ export const categorySelectHandler = (selectedCategory, sort, order) => {
   });
 };
 
-export const deleteComment = (comment_id) => {
+export const deleteCommentHandler = (comment_id) => {
   return ncGamesApi.delete(`/comments/${comment_id}`).then((res) => {
     console.log(res.data)
-    // data willl need a . something here
-    return res.data;
+    return res.data.comment;
   })
 }
 
