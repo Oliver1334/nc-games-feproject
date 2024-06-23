@@ -1,77 +1,78 @@
-import { getCommentsById, postCommentHandler } from "../api";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { getCommentsById, postCommentHandler, deleteCommentHandler } from "../api";
 import CommentCard from "./CommentCard";
-import { UserContext } from "../contexts/UserContext"
+import { UserContext } from "../contexts/UserContext";
 
-const CommentList = (passed_id) => {
-  const { review_id } = passed_id;
+const CommentList = ({ review_id }) => {
+  const { user } = useContext(UserContext);
   const [comments, setComments] = useState([]);
   const [inputComment, setInputComment] = useState("");
   const [commentError, setCommentError] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
-  const [reloadKey, setReloadKey] = useState(0); // Key to force component re-render
-  // const [loading, setLoading] = useState(true);
-  const user = "jessjelly"
-
-  console.log(comments);
-
-  // useEffect(() => {
-  //   getCommentsById(review_id).then((data) => {
-  //     setComments(data);
-  //     // setLoading(false);
-  //   });
-  // }, [review_id]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Function to fetch comments
     const fetchComments = async () => {
       try {
         const data = await getCommentsById(review_id);
-        setComments(data.comments); // Set comments state with fetched data
-        setIsLoading(false); // Set loading to false after data is fetched
+        setComments(data.comments);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching comments:", error);
-        setComments([]); // If there's an error, set comments to an empty array
-        setIsLoading(false); // Set loading to false on error
+        setComments([]);
+        setIsLoading(false);
       }
     };
 
-    fetchComments(); // Call the fetchComments function on component mount
-  }, [review_id, reloadKey]);
+    fetchComments();
+  }, [review_id]);
 
   const typeComment = (event) => {
     setCommentError(false);
     setInputComment(event.target.value);
-    console.log(inputComment);
   };
 
-  const submitComment = (event) => {
+  const submitComment = async (event) => {
+    event.preventDefault();
     if (inputComment.length < 2) {
       setCommentError(true);
-    } else {
-      setButtonDisabled(true);
-      postCommentHandler({ review_id, user, inputComment }).then(
-        (returnedComment) => {
-          setButtonDisabled(false);
-          setInputComment("");
-          setReloadKey(reloadKey + 1);
-          setComments((currentComments) => {
-            return [returnedComment, ...currentComments];
-          });
-        }
-      );
+      return;
+    }
+    setButtonDisabled(true);
+    try {
+      const returnedComment = await postCommentHandler({
+        review_id,
+        user: user.username,
+        inputComment,
+      });
+      setButtonDisabled(false);
+      setInputComment("");
+      setComments((currentComments) => [returnedComment, ...currentComments]);
+    } catch (error) {
+      console.error("Failed to post comment:", error);
+      setButtonDisabled(false);
     }
   };
 
-  if (!Array.isArray(comments)) {
+  const handleDelete = async (comment_id) => {
+    try {
+      await deleteCommentHandler(comment_id);
+      setComments((currentComments) =>
+        currentComments.filter((comment) => comment.comment_id !== comment_id)
+      );
+    } catch (error) {
+      console.error("Failed to delete comment:", error);
+    }
+  };
+
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
   return (
     <div className="comments">
       <h3>Comments</h3>
-      <form id="post-comment">
+      <form id="post-comment" onSubmit={submitComment}>
         <label htmlFor="comment-box">Join the Conversation!</label>
         <br />
         <textarea
@@ -80,37 +81,29 @@ const CommentList = (passed_id) => {
           value={inputComment}
         ></textarea>
         <br />
-
-        <button
-          id="submit-comment"
-          onClick={(event) => {
-            event.preventDefault();
-            submitComment();
-          }}
-          disabled={buttonDisabled}
-        >
+        <button id="submit-comment" type="submit" disabled={buttonDisabled}>
           {buttonDisabled ? "Please Wait..." : "Post a Comment"}
         </button>
+        {commentError && (
           <span id="comment-length-error" className="error-box">
-            {commentError ? (
-                <p>
-                    Comments must contain at least 2 characters. Please try again!
-                </p>
-            ) : null}
+            <p>Comments must contain at least 2 characters. Please try again!</p>
           </span>
+        )}
       </form>
 
       <section id="comment-list">
-        <ul value={comments.length}>
-          {comments.map((element) => {
-            console.log(element)
-            return <CommentCard key={element.comment_id} comment={element} />;
-          })}
+        <ul>
+          {comments.map((comment) => (
+            <CommentCard
+              key={comment.comment_id} // Ensure key is unique
+              comment={comment}
+              onDelete={user.username === comment.author ? handleDelete : null}
+            />
+          ))}
         </ul>
       </section>
     </div>
   );
 };
-
 
 export default CommentList;
