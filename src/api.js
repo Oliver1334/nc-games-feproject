@@ -15,13 +15,18 @@ export const categorySelectHandler = (selectedCategory, sort, order) => {
     return res.data.reviews;
   });
 };
+// api.jsx
 
-export const deleteCommentHandler = (comment_id) => {
-  return ncGamesApi.delete(`/comments/${comment_id}`).then((res) => {
-    console.log(res.data)
-    return res.data.comment;
-  })
-}
+export const deleteCommentHandler = async (comment_id) => {
+  try {
+    const response = await ncGamesApi.delete(`/comments/${comment_id}`);
+    return response.data.comment; // Assuming the server responds with the deleted comment object
+  } catch (error) {
+    console.error("Failed to delete comment:", error);
+    throw error; // Propagate the error to handle it in the calling function
+  }
+};
+
 
 export const fetchReviews = (category = null) => {
   const filterURL = category ? `?category=${category}` : "";

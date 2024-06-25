@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInHandler } from "../api";
 import { UserContext } from "../contexts/UserContext";
 import "../css/SignIn.css";
 
 export const SignIn = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, login } = useContext(UserContext); // Destructure login from context
+
   const [inputUsername, setInputUsername] = useState("");
   const [usernameErr, setUsernameErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
@@ -13,11 +14,6 @@ export const SignIn = () => {
   const [loadSignin, setLoadSignin] = useState(false);
 
   const navigate = useNavigate();
-  useEffect(() => {
-    if (user.username) {
-      navigate("/account");
-    }
-  }, [user, navigate]); //if signed in already, navigates to account page
 
   const usernameHandler = (event) => {
     setUsernameErr(false);
@@ -32,21 +28,25 @@ export const SignIn = () => {
   const signInButton = (event) => {
     setLoadSignin(true);
     event.preventDefault();
+    
     if (inputPassword === "") {
       setLoadSignin(false);
       return setPasswordErr(true);
     }
+    
     signInHandler(inputUsername).then((users) => {
-const foundUser = users.find((user) => user.username === inputUsername)
+      const foundUser = users.find((user) => user.username === inputUsername);
       if (foundUser) {
         setLoadSignin(false);
-        setUser(foundUser);
+        login(foundUser); // Update user context with foundUser
+        navigate("/account"); // Navigate to account page on successful sign in
       } else {
         setLoadSignin(false);
         setUsernameErr(true);
       }
-      });
+    });
   };
+
   return (
     <div>
       <h3>Welcome!</h3>
@@ -65,7 +65,7 @@ const foundUser = users.find((user) => user.username === inputUsername)
           <br />
           <label htmlFor="password">Password: </label>
           <input
-            id="password:"
+            id="password"
             placeholder="Password"
             onChange={passwordHandler}
             type="password"
@@ -89,7 +89,6 @@ const foundUser = users.find((user) => user.username === inputUsername)
           ) : null}
         </span>
         <span className="error-box">
-          {" "}
           {loadSignin ? <p>Signing in, please wait...</p> : null}
         </span>
       </div>
