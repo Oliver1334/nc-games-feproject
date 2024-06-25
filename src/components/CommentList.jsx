@@ -10,6 +10,7 @@ const CommentList = ({ review_id }) => {
   const [commentError, setCommentError] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPosting, setIsPosting] = useState(false);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -39,21 +40,30 @@ const CommentList = ({ review_id }) => {
       return;
     }
     setButtonDisabled(true);
+    setIsPosting(true);
     try {
-      const returnedComment = await postCommentHandler({
+      const comments = await postCommentHandler({
         review_id,
         user: user.username,
         inputComment,
       });
+  
+      // Assuming postCommentHandler returns an array, update state correctly
+      if (Array.isArray(comments) && comments.length > 0) {
+        setComments((currentComments) => [comments[0], ...currentComments]);
+      }
+  
       setButtonDisabled(false);
       setInputComment("");
-      setComments((currentComments) => [returnedComment, ...currentComments]);
+      setIsPosting(false);
     } catch (error) {
       console.error("Failed to post comment:", error);
       setButtonDisabled(false);
+      setIsPosting(false);
     }
   };
 
+  
   const handleDelete = async (comment_id) => {
     try {
       await deleteCommentHandler(comment_id);
@@ -66,7 +76,7 @@ const CommentList = ({ review_id }) => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>Loading comments...</p>;
   }
 
   return (
@@ -90,12 +100,12 @@ const CommentList = ({ review_id }) => {
           </span>
         )}
       </form>
-
+      {isPosting && <p>Posting your comment...</p>}
       <section id="comment-list">
         <ul>
           {comments.map((comment) => (
             <CommentCard
-              key={comment.comment_id} // Ensure key is unique
+              key={comment.comment_id}
               comment={comment}
               onDelete={user.username === comment.author ? handleDelete : null}
             />

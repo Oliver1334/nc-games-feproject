@@ -55,22 +55,19 @@ export const signInHandler = (username) => {
   });
 };
 
-export const postCommentHandler = ({ review_id, user, inputComment }) => {
-  console.log(user);
-  console.log(review_id);
-  console.log(inputComment);
-  return ncGamesApi
-    .post(`/reviews/${review_id}/comments`, {
+export const postCommentHandler = async ({ review_id, user, inputComment }) => {
+  try {
+    const response = await ncGamesApi.post(`/reviews/${review_id}/comments`, {
       username: user,
       body: inputComment,
-    })
-    .then((res) => {
-      console.log(res);
-      return res.data.comment;
-    })
-    .catch((err) => {
-      console.log(err, "<err");
     });
+    console.log(response.data.comment)
+    return response.data.comment;
+ 
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
 };
 
 export const voteForReview = (review_id) => {
