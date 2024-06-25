@@ -1,22 +1,28 @@
+// CommentList.jsx
+
 import React, { useState, useEffect, useContext } from "react";
 import { getCommentsById, postCommentHandler, deleteCommentHandler } from "../api";
 import CommentCard from "./CommentCard";
 import { UserContext } from "../contexts/UserContext";
 
 const CommentList = ({ review_id }) => {
-  const { user } = useContext(UserContext);
+  const { user, isLoggedIn } = useContext(UserContext);
   const [comments, setComments] = useState([]);
   const [inputComment, setInputComment] = useState("");
   const [commentError, setCommentError] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isPosting, setIsPosting] = useState(false);
+  const [showSignInMessage, setShowSignInMessage] = useState(false); // New state
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const data = await getCommentsById(review_id);
-        setComments(data.comments);
+        if (data && data.comments) {
+          setComments(data.comments);
+        } else {
+          setComments([]);
+        }
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching comments:", error);
@@ -35,48 +41,50 @@ const CommentList = ({ review_id }) => {
 
   const submitComment = async (event) => {
     event.preventDefault();
+    if (!isLoggedIn) {
+      setShowSignInMessage(true); // Display message
+      return;
+    }
     if (inputComment.length < 2) {
       setCommentError(true);
       return;
     }
     setButtonDisabled(true);
-    setIsPosting(true);
     try {
-      const comments = await postCommentHandler({
+      const response = await postCommentHandler({
         review_id,
         user: user.username,
         inputComment,
       });
-  
-      // Assuming postCommentHandler returns an array, update state correctly
-      if (Array.isArray(comments) && comments.length > 0) {
-        setComments((currentComments) => [comments[0], ...currentComments]);
-      }
-  
       setButtonDisabled(false);
       setInputComment("");
-      setIsPosting(false);
+      // Check if response is an array and has at least one element
+      if (Array.isArray(response) && response.length > 0) {
+        setComments((currentComments) => [response[0], ...currentComments]);
+      } else {
+        console.error("Invalid response format from postCommentHandler:", response);
+      }
     } catch (error) {
       console.error("Failed to post comment:", error);
       setButtonDisabled(false);
-      setIsPosting(false);
     }
   };
 
-  
   const handleDelete = async (comment_id) => {
     try {
       await deleteCommentHandler(comment_id);
+      // Update the comments state by filtering out the deleted comment
       setComments((currentComments) =>
         currentComments.filter((comment) => comment.comment_id !== comment_id)
       );
     } catch (error) {
       console.error("Failed to delete comment:", error);
+      // Optionally handle error state or display error message
     }
   };
 
   if (isLoading) {
-    return <p>Loading comments...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
@@ -94,13 +102,18 @@ const CommentList = ({ review_id }) => {
         <button id="submit-comment" type="submit" disabled={buttonDisabled}>
           {buttonDisabled ? "Please Wait..." : "Post a Comment"}
         </button>
+        {showSignInMessage && ( // Conditionally render the message
+          <span id="comment-sign-in-message" className="error-box">
+            <p>Please sign in to post a comment.</p>
+          </span>
+        )}
         {commentError && (
           <span id="comment-length-error" className="error-box">
             <p>Comments must contain at least 2 characters. Please try again!</p>
           </span>
         )}
       </form>
-      {isPosting && <p>Posting your comment...</p>}
+
       <section id="comment-list">
         <ul>
           {comments.map((comment) => (
