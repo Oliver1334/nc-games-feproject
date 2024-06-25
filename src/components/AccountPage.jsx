@@ -1,20 +1,29 @@
-import React, { useEffect, useContext } from "react";
+// AccountPage.jsx
+
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 export const AccountPage = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!user.username) {
-      navigate("/signin");
+      navigate("/signin"); // Move navigation outside of rendering
     }
-  }, [user, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const signOut = () => {
-    setUser({}); // Update user state with an empty object
+    logout(); // Call logout function to clear user state and update isLoggedIn to false
+    navigate("/"); // Navigate after logout
   };
+
+  // Render null if user is not logged in to avoid setState during rendering
+  if (!user.username) {
+    return null;
+  }
 
   return (
     <div>
