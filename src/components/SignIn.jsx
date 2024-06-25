@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 import "../css/SignIn.css";
 
 export const SignIn = () => {
-  const { user, login } = useContext(UserContext); // Destructure login from context
+  const { login } = useContext(UserContext); // Destructure login from context
 
   const [inputUsername, setInputUsername] = useState("");
   const [usernameErr, setUsernameErr] = useState(false);
