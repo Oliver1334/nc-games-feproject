@@ -1,74 +1,72 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)#
+# NC Games Backend
 
 
 
-My api https://nc-games-2kfx.onrender.com
+Link to deployed front-end
+
+Link to backend on github
+
+
+
+
+## NC Games in-browser Features
+Using the URL above, you can explore the features of the website.
+
+### Homepage
+
+- The link above directs to the `Homepage`, which contains a carousel of 'editor's picks' news articles. The user can click on the articles in the carousel, or can navigate to all articles using the link at the bottom of the page or clicking on the `Articles` tab on the nav bar.
+
+- If a user is logged in, a 'Welcome < user > !' greeting will be displayed alongside the user's profile picture. This defaults to 'Welcome Guest!' if no user is logged in. 
+
+- Users can navigate to the `Homepage` at any time by clicking the 'NC News' logo in the top left of the screen.
+
+### Articles
+
+- Displays articles using a responsive layout, including title, creator data and a snippet of the article body. Users can click on an article card to navigate to a `Single Article`
+
+- Users can filter by topic using the dropdown menu on the right of the screen
+
+### Single Article
+
+- Displays the article body, title, photo and creator data, as well as a comments section. 
+
+- Users can click to give a vote and then click again to remove the vote. This functionality works even if not signed in. 
+
+- Users can comment only if they are signed in. 
+
+### Sign in 
+
+- Error handling to ensure that a valid username has been entered - this can be any username recorded in the database, but `jessjelly` is recommended by the username hint if no valid username has been entered when trying to sign in. 
+
+- Error handling to ensure that a password (any) has been entered. 
+
+- Automatically redirects to `Account Page` and changes the display in the nav bar to match once logged in, showing the user's name and profile picture. 
+
+
+
+* View all articles
+* View a specific article
+* Filter, sort and/or order articles via queries
+* View, post and delete comments on articles
+* Upvote or downvote an article
+* View all users
+
+
+## Running this project locally
+
+If you would like to run this project locally, follow the guide below:
+
+*Note: The minimum version of Node.js required to run this is `V19.1.0`*
+
+- Firstly, fork and clone this repo onto your local device
+
+- Navigate to the folder and install the npm packages with the following command:
+
+    `npm install`
+
+- Finally, run the project using the following command:
+
+    `npm start`
+
+
+
