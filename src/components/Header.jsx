@@ -1,10 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
+import ncGameslogo from "../images/ncGameslogo.jpg"
+import "../css/Header.css"; // Import the CSS file here
 
 const Header = () => {
   const { user } = useContext(UserContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
     if (user.username) {
       setIsLoggedIn(true);
@@ -17,7 +20,7 @@ const Header = () => {
     <div className="header">
       <section className="title">
         <Link className="link" to="/">
-          NC GAMES
+          <img src={ncGameslogo} alt="NC Games" className="nc-logo" />
         </Link>
       </section>
       <section className="nav-bar">
@@ -29,9 +32,9 @@ const Header = () => {
 
         <section className="account">
           {isLoggedIn ? (
-            <Link to="/account">My Account</Link>
+            <Link className="link" to="/account">My Account</Link>
           ) : (
-            <Link to="/signin">Sign In</Link>
+            <Link className="link" to="/signin">Sign In</Link>
           )}
         </section>
       </section>

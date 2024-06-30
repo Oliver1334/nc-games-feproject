@@ -115,15 +115,3 @@ const handleOrderChange = (event) => {
 };
 
 
-//     return (
-//         <section id="review-list">
-//            <ul value={reviews.length}>
-//             {reviews.map((element) => {
-//                 return <ReviewCard key={element.review_id} review={element} />
-//             })}
-//            </ul>
-//         </section>
-//     )
-// }
-
-// export default ReviewList;
