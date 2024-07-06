@@ -3,6 +3,7 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
+import "../css/SignIn.css"
 
 export const AccountPage = () => {
   const { user, logout } = useContext(UserContext);
@@ -26,7 +27,7 @@ export const AccountPage = () => {
   }
 
   return (
-    <div>
+    <div className="sign-in">
       <h2>My Account</h2>
       <img src={user.avatar_url} alt={user.username} />
       <p>Name: {user.name}</p>

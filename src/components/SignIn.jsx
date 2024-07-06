@@ -48,7 +48,7 @@ export const SignIn = () => {
   };
 
   return (
-    <div>
+    <div className="sign-in">
       <h3>Welcome!</h3>
       <p>Login to your account</p>
       <div className="login-box">
