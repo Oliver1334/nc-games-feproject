@@ -22,7 +22,7 @@ export const ReviewCard = ({ review }) => {
                 <h3>Review by: {owner}</h3>
                 <h3>Designer: {designer}</h3>
                 <h4>Category: {category}</h4>
-                <h4>Posted on {formattedDate}</h4>
+                <h4>Posted on: {formattedDate}</h4>
                 <h4>Votes: {votes}</h4>
                 <h4>Comments: {comment_count}</h4>
                 <div>

@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { getReviewById, voteForReview } from '../api';
 import { useState, useEffect } from 'react';
 import CommentList from './CommentList';
+import { Loading } from './Loading';
 import "../css/SingleReview.css"
 
 const ViewReview = () => {
@@ -33,14 +34,15 @@ const ViewReview = () => {
 const {category, designer, owner, review_body, review_img_url, title, votes } = review;
 
 
-if (loading) return <p>Loading...</p>
+if (loading) return <Loading />;
 
     return (
         <section>
-            <div>
+            <div >
                 <div className='single-review'>
-
+                <div className='image-container'>
                 <img src={review_img_url} className='single-image' alt={title} />
+                </div>
 
                 <h3>{title}</h3>
                 <p>Category: {category}</p>
@@ -57,7 +59,7 @@ if (loading) return <p>Loading...</p>
             <br/>
             <br/>
             <div>
-                <h2> Comments </h2>
+                
             <CommentList review_id = {review_id}/>
             </div>
             </div>

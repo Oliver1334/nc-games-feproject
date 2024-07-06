@@ -88,7 +88,7 @@ const CommentList = ({ review_id }) => {
 
   return (
     <div className="comments">
-      <h3>Comments</h3>
+      <h3 >Comments</h3>
       <form id="post-comment" onSubmit={submitComment}>
         <label htmlFor="comment-box">Join the Conversation!</label>
         <br />
@@ -113,7 +113,7 @@ const CommentList = ({ review_id }) => {
         )}
       </form>
 
-      <section id="comment-list">
+      <section id="comment-list" className="comments">
         <ul>
           {comments.map((comment) => (
             <CommentCard

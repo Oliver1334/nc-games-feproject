@@ -25,4 +25,5 @@
     border-top: 10px solid #ed4d00;
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
+    color: ff3231;
   }
