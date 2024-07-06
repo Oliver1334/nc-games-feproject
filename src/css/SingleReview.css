@@ -1,20 +1,21 @@
-.single-article {
+.single-review {
     position: absolute;
     padding-top: 3vh;
     margin-left: 10vw;
     padding-left: 5vw;
     padding-right: 5vw;
     margin-right: 10vw;
-    border-color: grey;
+    border-color: grey; /* possibly change border */
     border-width: 1px;
     border-style: solid;
     border-top: none;
+    text-align: center;
 
 }
 
 
 @media screen and (max-width: 768px) {
-    .single-article {
+    .single-review {
         margin: none;
         border: none;
         padding-left: 5vw;
@@ -22,28 +23,24 @@
     }
 }
 
-.single-article > h2 {
+.single-review > h2 {
     text-align: left;
 }
-.single-article > p {
+.single-review > p {
     text-align: left;
 }
 
 .single-image {
     max-width: 80vw;
 }
-.article-info {
+.review-info {
     display: flex;
     justify-content: space-between;
 }
 
-.creator-data {
+.author-data {
     font-weight: bold;
 }
 .date {
     font-style: italic;
 }
-
-
-
-  

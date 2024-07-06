@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { getReviewById, voteForReview } from '../api';
 import { useState, useEffect } from 'react';
 import CommentList from './CommentList';
+import "../css/SingleReview.css"
 
 const ViewReview = () => {
     const { review_id } = useParams();
@@ -36,19 +37,22 @@ if (loading) return <p>Loading...</p>
 
     return (
         <section>
-            <article>
-                <img src={review_img_url} alt="" />
+            <article >
+                <div className='single-review'>
+
+                <img src={review_img_url} className='single-image' alt={title} />
 
                 <h3>{title}</h3>
-                <h3>Category: {category}</h3>
-                <h3>Designer: {designer}</h3>
-                <h3>Reviewed by: {owner}</h3>
+                <p>Category: {category}</p>
+                <p>Designer: {designer}</p>
+                <p className='author-data'>Reviewed by: {owner}</p>
                 <p>
                     {review_body}
                 </p>
                 <h4>Votes: {votes + userVote}</h4>
                 <button onClick={onClick} disabled={userVote !== 0}>Vote</button>
                 {isVotingErr && <p>Vote not applied!</p>}
+                </div>
             </article>
             <br/>
             <br/>
