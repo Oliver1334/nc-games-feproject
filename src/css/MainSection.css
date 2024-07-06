@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem; /* Padding for spacing */
+    padding: 1rem 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for subtle depth */
     width: 100vw;
     position: relative;
@@ -63,13 +63,14 @@
   /* Editor's Picks section */
   .homeEditorWrapper {
     background-color: white;
-    padding-top: 1vh;
+    padding-top: 3vh;
     padding-bottom: 1vh;
+    text-align: center;
   }
   
   .homeEditorWrapper > h2 {
     color: black;
-    text-align: left;
+    text-align: center;
     padding-left: 1vw;
     padding-bottom: 0.5vw;
     border-bottom: 1px solid #ccc; /* Light border for separation */
@@ -77,10 +78,15 @@
   
   #home-read-more {
     color: black;
+  
   }
   
   #home-read-more:hover {
-    color: #ED4D00; /* Orange color on hover */
+    color: #ff3231; /* NC Games logo Red*/
+  }
+
+  .read-more {
+    text-align: center;
   }
   
   .homeCarouselWrapper {
