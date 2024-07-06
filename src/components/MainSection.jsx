@@ -30,10 +30,11 @@ const MainSection = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <main className="main-section">
+    <div>
       {/* Black bar under the header */}
+
       <div className="main-nav">
-        <h2>Editor's Picks</h2>
+        <h2>Featured Reviews</h2>
         <div className="user-status">
           {user.username ? (
             <>
@@ -57,7 +58,7 @@ const MainSection = () => {
           <ReviewsCarousel slides={slides} />
         </div>
       </div>
-      <div>
+      <div className="read-more">
         <p>
           Want to read more?{" "}
           <Link to="/reviews" id="home-read-more">
@@ -65,7 +66,7 @@ const MainSection = () => {
           </Link>
         </p>
       </div>
-    </main>
+    </div>
   );
 };
 
