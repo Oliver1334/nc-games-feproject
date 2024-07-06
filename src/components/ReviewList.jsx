@@ -64,8 +64,8 @@ const handleOrderChange = (event) => {
     return <Loading />;
   } else {
     return (
-      <div className="articles">
-        <div className="article-nav">
+      <div className="reviews">
+        <div className="reviews-nav">
           <h2>Reviews</h2>
           <form className="selectors">
             <label htmlFor="category-dropdown">Search by Topic: </label>
@@ -100,10 +100,10 @@ const handleOrderChange = (event) => {
           </form>
         </div>
 
-        <ul className="listed-articles">
+        <ul className="listed-reviews">
           {category.map((review) => {
             return (
-              <li key={review.review_id} className="article-card">
+              <li key={review.review_id} className="review-card">
                 <ReviewCard review={review} />
               </li>
             );

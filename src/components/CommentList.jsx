@@ -1,5 +1,3 @@
-// CommentList.jsx
-
 import React, { useState, useEffect, useContext } from "react";
 import { getCommentsById, postCommentHandler, deleteCommentHandler } from "../api";
 import CommentCard from "./CommentCard";
