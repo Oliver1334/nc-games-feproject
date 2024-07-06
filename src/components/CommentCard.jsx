@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import "../css/CommentCard.css"
 
 const CommentCard = ({ comment, onDelete }) => {
   const { user } = useContext(UserContext);
@@ -12,14 +13,14 @@ const CommentCard = ({ comment, onDelete }) => {
 
   return (
     <li key={comment_id}>
-      <article>
-        <h3>{body}</h3>
-        <h3>Posted by: {author}</h3>
-        <h3>Votes: {votes}</h3>
+      <div className="comment-card">
+        <p>{body}</p>
+        <p className="comment-author">Posted by: {author}</p>
+        <p>Votes: {votes}</p>
         {user.username === author && ( // Check if signed-in user is the author
           <button onClick={() => onDelete(comment_id)}>Delete</button>
         )}
-      </article>
+      </div>
     </li>
   );
 };

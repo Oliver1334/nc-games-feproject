@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { getCommentsById, postCommentHandler, deleteCommentHandler } from "../api";
 import CommentCard from "./CommentCard";
 import { UserContext } from "../contexts/UserContext";
+import "../css/Comments.css"
 
 const CommentList = ({ review_id }) => {
   const { user, isLoggedIn } = useContext(UserContext);

@@ -9,3 +9,8 @@ header, .main-section {
   margin: 0;
   padding: 0;
 }
+
+.background-container {
+  position: relative;
+  background-color: #ED4D00;
+}

@@ -37,7 +37,7 @@ if (loading) return <p>Loading...</p>
 
     return (
         <section>
-            <article >
+            <div>
                 <div className='single-review'>
 
                 <img src={review_img_url} className='single-image' alt={title} />
@@ -53,13 +53,14 @@ if (loading) return <p>Loading...</p>
                 <button onClick={onClick} disabled={userVote !== 0}>Vote</button>
                 {isVotingErr && <p>Vote not applied!</p>}
                 </div>
-            </article>
+            
             <br/>
             <br/>
             <div>
                 <h2> Comments </h2>
-            </div>
             <CommentList review_id = {review_id}/>
+            </div>
+            </div>
         </section>
     )
 }
