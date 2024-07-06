@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+
 export const ReviewCard = ({ review }) => {
     const previewReview = review.review_body.substring(0, 100) + "...";
     const previewShortReview = review.review_body.substring(0, 50) + "...";
@@ -14,7 +15,7 @@ export const ReviewCard = ({ review }) => {
     return (
         
             <article>
-                <img src={review_img_url} alt="{title}" className='article-card-img' />
+                <img src={review_img_url} alt="{title}" className='review-card-img' />
                 <h3>Title: {title} </h3>
             {title.length < 48 ? <p>{previewReview}</p> : <p>{previewShortReview}</p>}
 
