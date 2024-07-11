@@ -15,7 +15,7 @@ const CommentList = ({ review_id }) => {
   const [commentError, setCommentError] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [showSignInMessage, setShowSignInMessage] = useState(false); // New state
+  const [showSignInMessage, setShowSignInMessage] = useState(false); 
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -45,7 +45,7 @@ const CommentList = ({ review_id }) => {
   const submitComment = async (event) => {
     event.preventDefault();
     if (!isLoggedIn) {
-      setShowSignInMessage(true); // Display message
+      setShowSignInMessage(true); 
       return;
     }
     if (inputComment.length < 2) {
@@ -108,7 +108,7 @@ const CommentList = ({ review_id }) => {
         <button id="submit-comment" type="submit" disabled={buttonDisabled}>
           {buttonDisabled ? "Please Wait..." : "Post a Comment"}
         </button>
-        {showSignInMessage && ( // Conditionally render the message
+        {showSignInMessage && ( 
           <span id="comment-sign-in-message" className="error-box">
             <p>Please sign in to post a comment.</p>
           </span>
