@@ -62,7 +62,7 @@ const MainSection = () => {
         <p>
           Want to read more?{" "}
           <Link to="/reviews" id="home-read-more">
-            Click here to browse all articles!
+            Click here to browse all reviews!
           </Link>
         </p>
       </div>
