@@ -3,7 +3,7 @@
 NC Games is a board game review aggregation app allowing users to view, vote and comment on reviews amongst other features.
 
 You can find the hosted version of this project here:
-
+https://nc-games1334.netlify.app/
 
 You can find the backend repo here:
 https://github.com/Oliver1334/nc-games-beproject
