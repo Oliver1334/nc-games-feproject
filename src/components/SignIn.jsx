@@ -28,12 +28,12 @@ export const SignIn = () => {
   const signInButton = (event) => {
     setLoadSignin(true);
     event.preventDefault();
-    
+
     if (inputPassword === "") {
       setLoadSignin(false);
       return setPasswordErr(true);
     }
-    
+
     signInHandler(inputUsername).then((users) => {
       const foundUser = users.find((user) => user.username === inputUsername);
       if (foundUser) {
