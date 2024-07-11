@@ -68,7 +68,7 @@ const handleOrderChange = (event) => {
         <div className="reviews-nav">
           <h2>Reviews</h2>
           <form className="selectors">
-            <label htmlFor="category-dropdown">Search by Topic: </label>
+            <label htmlFor="category-dropdown">Search by Category: </label>
             <select id="category-dropdown" value={selectedCategory} onChange={handleCategoryChange}>
               <option key="All" value="All">All</option>
               <option key="strategy" value="strategy">Strategy</option>
