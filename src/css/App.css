@@ -5,11 +5,6 @@ main {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* header, .main-section {
-  margin: 0;
-  padding: 0;
-} */
-
 .background-container {
   position: relative;
   background-color: #ed4d00;

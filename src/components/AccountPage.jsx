@@ -9,9 +9,9 @@ export const AccountPage = () => {
 
   useEffect(() => {
     if (!user.username) {
-      navigate("/signin"); // Move navigation outside of rendering
+      navigate("/signin"); 
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [user]);
 
   const signOut = () => {
