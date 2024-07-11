@@ -6,9 +6,9 @@
   margin-top: 1vh;
   margin-bottom: 3vh;
   text-align: center;
-  position: relative; 
-  border-left: 5px solid black; 
-  border-right: 5px solid black; 
+  position: relative;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -30,7 +30,7 @@
   min-height: 100px;
   padding: 0.5em;
   border-radius: 5px;
-  border: 1px solid #ccc
+  border: 1px solid #ccc;
 }
 
 #submit-comment:disabled {
@@ -38,7 +38,7 @@
   cursor: not-allowed;
 }
 
-#error-box{
+#error-box {
   margin-top: 1vw;
   color: red;
 }

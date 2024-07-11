@@ -27,7 +27,6 @@ export const deleteCommentHandler = async (comment_id) => {
   }
 };
 
-
 export const fetchReviews = (category = null) => {
   const filterURL = category ? `?category=${category}` : "";
 
@@ -66,9 +65,8 @@ export const postCommentHandler = async ({ review_id, user, inputComment }) => {
       username: user,
       body: inputComment,
     });
-    console.log(response.data.comment)
+    console.log(response.data.comment);
     return response.data.comment;
- 
   } catch (err) {
     console.error(err);
     throw err;

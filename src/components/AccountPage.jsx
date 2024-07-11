@@ -1,9 +1,7 @@
-// AccountPage.jsx
-
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import "../css/SignIn.css"
+import "../css/SignIn.css";
 
 export const AccountPage = () => {
   const { user, logout } = useContext(UserContext);

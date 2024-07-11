@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import ncGameslogo from "../images/ncGameslogo.jpg"
+import ncGameslogo from "../images/ncGameslogo.jpg";
 import "../css/Header.css"; // Import the CSS file here
 
 const Header = () => {
@@ -32,9 +32,13 @@ const Header = () => {
 
         <section className="account">
           {isLoggedIn ? (
-            <Link className="link" to="/account">My Account</Link>
+            <Link className="link" to="/account">
+              My Account
+            </Link>
           ) : (
-            <Link className="link" to="/signin">Sign In</Link>
+            <Link className="link" to="/signin">
+              Sign In
+            </Link>
           )}
         </section>
       </section>

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import "../css/CommentCard.css"
+import "../css/CommentCard.css";
 
 const CommentCard = ({ comment, onDelete }) => {
   const { user } = useContext(UserContext);

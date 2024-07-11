@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getCommentsById, postCommentHandler, deleteCommentHandler } from "../api";
+import {
+  getCommentsById,
+  postCommentHandler,
+  deleteCommentHandler,
+} from "../api";
 import CommentCard from "./CommentCard";
 import { UserContext } from "../contexts/UserContext";
-import "../css/Comments.css"
+import "../css/Comments.css";
 
 const CommentList = ({ review_id }) => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -61,7 +65,10 @@ const CommentList = ({ review_id }) => {
       if (Array.isArray(response) && response.length > 0) {
         setComments((currentComments) => [response[0], ...currentComments]);
       } else {
-        console.error("Invalid response format from postCommentHandler:", response);
+        console.error(
+          "Invalid response format from postCommentHandler:",
+          response
+        );
       }
     } catch (error) {
       console.error("Failed to post comment:", error);
@@ -88,7 +95,7 @@ const CommentList = ({ review_id }) => {
 
   return (
     <div className="comments">
-      <h3 >Comments</h3>
+      <h3>Comments</h3>
       <form id="post-comment" onSubmit={submitComment}>
         <label htmlFor="comment-box">Join the Conversation!</label>
         <br />
@@ -108,7 +115,9 @@ const CommentList = ({ review_id }) => {
         )}
         {commentError && (
           <span id="comment-length-error" className="error-box">
-            <p>Comments must contain at least 2 characters. Please try again!</p>
+            <p>
+              Comments must contain at least 2 characters. Please try again!
+            </p>
           </span>
         )}
       </form>

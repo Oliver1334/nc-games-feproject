@@ -5,48 +5,44 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px; /* Adjust gap between grid items */
   list-style-type: none;
-  }
-  .review-card {
-    padding: 20px; /* Adjust padding as per your design */
-    background-color: #fff;
-    border: 1px solid #ccc; /* Add a border for separation */
-    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
-    margin-bottom: 20px; /* Adjust margin between cards */
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    padding-right: 1vw;
-    padding-left: 1vw;
-    align-items: center;
-    text-align: center;
-    background-color: #fff;
-    display: grid;
-    position: relative;
-    margin: 15px 15px 15px 0;
-  
-  }
-  .review-card-img {
-    width: 100%; /* Ensure image fills its container */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 200px; /* Set a maximum height if necessary */
-    object-fit: cover; /* Scale the image while maintaining aspect ratio */
-    border-top-left-radius: 8px; /* Optional: Rounded corners */
-    border-top-right-radius: 8px; /* Optional: Rounded corners */
-  
-  }
-  .readmore {
-    color: #ED4D00;
-    text-decoration: underline;
-  }
-  
-  
-  .reviews-nav {  
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding-right: 0.5vw;
-    padding-left: 0.95vw;
-    align-items: center;
-  
-  }
+}
+.review-card {
+  padding: 20px; /* Adjust padding as per your design */
+  background-color: #fff;
+  border: 1px solid #ccc; /* Add a border for separation */
+  border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
+  margin-bottom: 20px; /* Adjust margin between cards */
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  display: grid;
+  position: relative;
+  margin: 15px 15px 15px 0;
+}
+.review-card-img {
+  width: 100%; /* Ensure image fills its container */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 200px; /* Set a maximum height if necessary */
+  object-fit: cover; /* Scale the image while maintaining aspect ratio */
+  border-top-left-radius: 8px; /* Optional: Rounded corners */
+  border-top-right-radius: 8px; /* Optional: Rounded corners */
+}
+.readmore {
+  color: #ed4d00;
+  text-decoration: underline;
+}
+
+.reviews-nav {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0.5vw;
+  padding-left: 0.95vw;
+  align-items: center;
+}

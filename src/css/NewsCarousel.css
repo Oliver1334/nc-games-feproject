@@ -11,10 +11,10 @@
     border-radius: 10px;
   }; */
 
-  .editors-title-link {
-    color: white;
-  }
+.editors-title-link {
+  color: white;
+}
 
-  .editors-title-link:hover {
-    color: #ED4D00
-  }
+.editors-title-link:hover {
+  color: #ed4d00;
+}
