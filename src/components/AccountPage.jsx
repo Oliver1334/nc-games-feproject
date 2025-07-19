@@ -12,7 +12,7 @@ export const AccountPage = () => {
       navigate("/signin"); 
     }
     
-  }, [user]);
+  }, [user, navigate]);
 
   const signOut = () => {
     logout(); // Call logout function to clear user state and update isLoggedIn to false
