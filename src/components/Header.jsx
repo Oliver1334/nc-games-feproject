@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import ncGameslogo from "../images/ncGameslogo.jpg";
-import "../css/Header.css"; 
+
 
 const Header = () => {
   const { user } = useContext(UserContext);

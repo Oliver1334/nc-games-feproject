@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../css/NewsCarousel.css";
 
 export const ReviewsCarousel = ({ slides }) => {
   const [imageIndex, setImageIndex] = useState(0);

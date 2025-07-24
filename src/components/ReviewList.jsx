@@ -4,8 +4,6 @@ import { categorySelectHandler } from "../api";
 import { CategoryContext } from "../contexts/CategoryContext";
 import { ReviewCard } from "./ReviewCard";
 import { Loading } from "./Loading";
-import "../css/Reviews.css";
-import "../css/App.css";
 
 export const Reviews = () => {
   const { category, setCategory } = useContext(CategoryContext);
