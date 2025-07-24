@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../css/MainSection.css";
 import { UserContext } from "../contexts/UserContext";
 import { ReviewsCarousel } from "./ReviewsCarousel";
 

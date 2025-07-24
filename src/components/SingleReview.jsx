@@ -3,7 +3,6 @@ import { getReviewById, voteForReview } from "../api";
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import { Loading } from "./Loading";
-import "../css/SingleReview.css";
 
 export const SingleReview = () => {
   const { review_id } = useParams();

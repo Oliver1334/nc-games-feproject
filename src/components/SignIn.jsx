@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInHandler } from "../api";
 import { UserContext } from "../contexts/UserContext";
-import "../css/SignIn.css";
 
 export const SignIn = () => {
   const { login } = useContext(UserContext); // Destructure login from context
