@@ -1,50 +1,12 @@
-# NC Games Frontend
+# React + Vite
 
-NC Games is a board game review aggregation app allowing users to view, vote and comment on reviews amongst other features.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-You can find the hosted version of this project here:
-https://nc-games1334.netlify.app/
+Currently, two official plugins are available:
 
-You can find the backend repo here:
-https://github.com/Oliver1334/nc-games-beproject
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Features
+## Expanding the ESLint configuration
 
-* Homepage carousel of featured reviews
-* View all articles
-* View a specific article
-* Filter, sort and/or order articles via queries
-* Sign in as a user to post comments on articles and delete those authored by current user
-* Upvote or downvote an article
-
-
-
-## Running this project locally
-
-*Note: The minimum version of Node.js required to run this is `V19.1.0`*
-
-1. Clone this repository:
-   ```
-   git clone https://github.com/Oliver1334/nc-games-feproject
-   ```
-
-2. Change into this repos directory:
-   ```
-   cd nc-games-feproject
-   ```
-
-3. Install dependencies
-   ```
-   npm install
-   ```
-
-4. Run a local instance of NC Games
-   ```
-   npm start
-   ```
-   
-5. Your default web browser should now automatically open NC Games, if not direct your browser to http://localhost:3000 
-
-
-
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
