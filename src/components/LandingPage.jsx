@@ -5,9 +5,9 @@ const LandingPage = () => {
 
 
 return (
-    <div> 
+    <div className="justify-center flex"> 
 
-        <p>LANDING PAGE</p>
+        <p className="text-brandDark">LANDING PAGE</p>
 
     </div>
 )
