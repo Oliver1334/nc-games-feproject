@@ -1,21 +1,23 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import LandingPage from './components/LandingPage'
-import Footer from './components/Footer'
-import './App.css'
+import React from "react";
+import { Route, Routes } from "react-router-dom"
+import Navbar from "./components/Navbar";
+import LandingPage from "./components/LandingPage";
+import Footer from "./components/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div>
+    < >
+
       <Navbar />
-    <body className="bg-brandDark">
-    <LandingPage />
-    </body>
-    <Footer />
-    </div>
-  )
+
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+
+      <Footer />
+    </>
+    
+  );
 }
 
-export default App
+export default App;
