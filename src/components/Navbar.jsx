@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { RiMoonClearLine, RiSunLine } from "react-icons/ri";
 
 
-const Navbar = () => {
+const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const [nav, setNav] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  
 
   
   return (
@@ -49,10 +49,8 @@ const Navbar = () => {
               {/*Darkmode button*/}
               <div className="gap-4">
                 <button className=" bg-brandPrimary rounded-md px-2 py-2.5 text-sm cursor-pointer"
-                onClick={() => {
-                  setIsDark(!isDark);
-                }}>
-                  {isDark ? (
+                onClick={toggleDarkMode}>
+                  {isDarkMode ? (
                     <RiSunLine className="w-4 h-4" />
                   ) : (
                     <RiMoonClearLine className="w-4 h-4" />
