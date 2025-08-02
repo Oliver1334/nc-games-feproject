@@ -1,12 +1,29 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@custom-variant dark (&:is(.dark *));
+
+
 @theme {
   --color-brandDark: #0C0703;
   --color-brandText: #F0E9E3;
   --color-brandPrimary: #FF7B00;
   --color-brandSecondary: #3E3B2C;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 html, body, #root {
   height: 100%;
