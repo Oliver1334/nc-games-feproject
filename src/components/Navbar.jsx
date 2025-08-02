@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { RiMoonClearLine, RiSunLine } from "react-icons/ri";
+
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  
   return (
     <header className="bg-white dark:bg-brandDark">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -40,8 +45,20 @@ const Navbar = () => {
 
             {/* Navbar box buttons */}
             <div className="flex items-center gap-4">
-              <div>
 
+              {/*Darkmode button*/}
+              <div className="gap-4">
+                <button className=" bg-brandPrimary rounded-md px-2 py-2.5 text-sm cursor-pointer"
+                onClick={() => {
+                  setIsDark(!isDark);
+                }}>
+                  {isDark ? (
+                    <RiSunLine className="w-4 h-4" />
+                  ) : (
+                    <RiMoonClearLine className="w-4 h-4" />
+                  
+                  )}
+                </button>
               </div>
 
 
