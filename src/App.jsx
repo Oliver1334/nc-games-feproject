@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false); // false means light mode
+  const [isDarkMode, setIsDarkMode] = useState(true); // false means light mode
 
   useEffect (() => {
     if(isDarkMode) {
