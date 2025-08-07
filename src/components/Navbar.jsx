@@ -51,10 +51,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 <button className=" bg-brandPrimary rounded-md px-2 py-2.5 text-sm cursor-pointer"
                 onClick={toggleDarkMode}>
                   {isDarkMode ? (
-                    <RiSunLine className="w-4 h-4" />
-                  ) : (
                     <RiMoonClearLine className="w-4 h-4" />
-                  
+                    
+                  ) : (
+                    <RiSunLine className="w-4 h-4" />
                   )}
                 </button>
               </div>
