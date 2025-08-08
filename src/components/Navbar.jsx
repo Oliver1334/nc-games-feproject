@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiMoonClearLine, RiSunLine } from "react-icons/ri";
+import NDGLogo from "../assets/NoDiceLogo.jpg"
 
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
@@ -9,13 +10,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
   
   return (
-    <header className="bg-white dark:bg-brandDark">
+    <header className="bg-brandLight dark:bg-brandDark">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <a className="block text-teal-600 dark:text-teal-300" href="/">
+            <a className="block text-brandLightText dark:text-brandText" href="/">
               <span className="sr-only">Home</span>
-              <p>LogoHere</p>
+              <img src={NDGLogo} alt="NC Games" className="h-auto max-w-xs" />
             </a>
           </div>
 
@@ -25,7 +26,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               <ul className="flex items-center gap-6 text-sm">
                 <li>
                   <a
-                    className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                    className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     href="#"
                   >
                     About
@@ -34,7 +35,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
                 <li>
                   <a
-                    className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                    className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     href="#"
                   >
                     Reviews
@@ -48,7 +49,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
               {/*Darkmode button*/}
               <div className="gap-4">
-                <button className=" bg-brandPrimary rounded-md px-2 py-2.5 text-sm cursor-pointer"
+                <button className=" bg-brandPrimary text-brandDark rounded-md px-2 py-2.5 text-sm cursor-pointer"
                 onClick={toggleDarkMode}>
                   {isDarkMode ? (
                     <RiMoonClearLine className="w-4 h-4" />
@@ -64,7 +65,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
               <div className="sm:flex sm:gap-4">
                 <a
-                  className="rounded-md bg-brandPrimary px-5 py-2.5 text-sm font-medium text-brandDark shadow-sm dark:hover:bg-brandSecondary"
+                  className="rounded-md bg-brandPrimary px-5 py-2.5 text-sm font-medium text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
                   href="#"
                 >
                   Login

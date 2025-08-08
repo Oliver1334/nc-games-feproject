@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import NDGLogo from "../assets/NoDiceLogo.jpg"
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div>
             <div className="text-brandText dark:text-brandText">
-              <p>LogoHere</p>
+              <img src={NDGLogo} alt="NC Games" className="h-auto max-w-xs" />
             </div>
 
             <ul className="mt-8 flex gap-6">
