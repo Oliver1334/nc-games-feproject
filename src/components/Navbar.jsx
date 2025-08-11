@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiMoonClearLine, RiSunLine } from "react-icons/ri";
 import NDGLogo from "../assets/NoDiceLogo.jpg"
+import NDGLogoSVG from "./icons/Logo.jsx"
 
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
@@ -16,7 +17,9 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           <div className="flex-1 md:flex md:items-center md:gap-12">
             <a className="block text-brandLightText dark:text-brandText" href="/">
               <span className="sr-only">Home</span>
-              <img src={NDGLogo} alt="NC Games" className="h-auto max-w-xs" />
+              {/* <img src={NDGLogo} alt="NC Games" className="h-auto max-w-xs" /> */}
+              <NDGLogoSVG className="w-60 h-32"/>
+
             </a>
           </div>
 

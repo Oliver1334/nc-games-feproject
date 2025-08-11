@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-white dark:bg-brandDark">
       <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-12 sm:px-6 lg:space-y-16 lg:px-8 ">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 sm:grid-cols-2">
           <div>
             <div className="text-brandText dark:text-brandText">
               <img src={NDGLogo} alt="NC Games" className="h-auto max-w-xs" />
@@ -108,7 +108,7 @@ const Footer = () => {
           </div>
 
           <div className="flex justify-end flex-row items-end">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-2  ">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:col-span-2 lg:col-span-2 lg:grid-cols-2  ">
               <div>
                 <p className="font-medium text-gray-900 dark:text-white">
                   Company
