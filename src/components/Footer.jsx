@@ -21,7 +21,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                  className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                 >
                   <span className="sr-only">Facebook</span>
                   <FacebookIcon />
@@ -33,7 +33,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                  className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                 >
                   <span className="sr-only">Instagram</span>
                   <InstagramIcon />
@@ -45,7 +45,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                  className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                 >
                   <span className="sr-only">Twitter</span>
                   <TwitterIcon />
@@ -57,7 +57,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                  className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                 >
                   <span className="sr-only">GitHub</span>
                   <GithubIcon />
@@ -69,7 +69,7 @@ const Footer = () => {
           <div className="flex justify-end flex-row items-end">
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:col-span-2 lg:col-span-2 lg:grid-cols-2  ">
               <div>
-                <p className="font-medium text-gray-900 dark:text-white">
+                <p className="font-medium text-brandLightText dark:text-brandText">
                   Company
                 </p>
 
@@ -77,7 +77,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       About
                     </a>
@@ -86,7 +86,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       Contact
                     </a>
@@ -95,7 +95,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       Advertise
                     </a>
@@ -104,7 +104,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       Support NDG
                     </a>
@@ -113,7 +113,7 @@ const Footer = () => {
               </div>
 
               <div>
-                <p className="font-medium text-gray-900 dark:text-white">
+                <p className="font-medium text-brandLightText dark:text-brandText">
                   Policies
                 </p>
 
@@ -121,7 +121,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       Community Guidelines
                     </a>
@@ -130,7 +130,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       Privacy
                     </a>
@@ -139,7 +139,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       Terms
                     </a>
@@ -148,7 +148,7 @@ const Footer = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+                      className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
                     >
                       Manage Cookies
                     </a>
@@ -159,7 +159,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="text-xs text-gray-500 dark:text-gray-400">
+        <p className="text-xs text-brandHighlight dark:text-brandHighlight">
           &copy; 2025. Oliver Taylor.
         </p>
       </div>
