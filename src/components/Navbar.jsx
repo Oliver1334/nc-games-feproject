@@ -18,7 +18,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <a className="block text-brandLightText dark:text-brandText" href="/">
               <span className="sr-only">Home</span>
               {/* <img src={NDGLogo} alt="NC Games" className="h-auto max-w-xs" /> */}
-              <NDGLogoSVG className="w-60 h-32"/>
+              <NDGLogoSVG className="w-60 h-32 "/>
 
             </a>
           </div>
