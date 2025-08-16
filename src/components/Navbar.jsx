@@ -37,12 +37,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 </li>
 
                 <li>
-                  <a
-                    className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
-                    href="#"
-                  >
-                    Reviews
-                  </a>
+                <Link
+  className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
+  to="/reviews"
+>
+  Reviews
+</Link>
                 </li>
               </ul>
             </nav>
