@@ -29,7 +29,7 @@ export const ReviewCard = ({ review }) => {
       <img
         src={review_img_url}
         alt={title}
-        className="w-full h-48 object-cover"
+        className="w-full h-48 object-cover "
       />
 
       {/* Top content grows to push the button to bottom */}
