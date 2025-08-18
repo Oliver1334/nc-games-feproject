@@ -65,10 +65,8 @@ export const Reviews = () => {
       <div className="reviews flex flex-col lg:flex-row gap-6">
         {/* Sorting Menu */}
         <aside className="w-full lg:w-72 bg-white p-4 rounded-xl shadow-md mb-6 lg:mb-0 order-1 lg:order-2 self-start">
-        
           <h2 className="text-xl font-semibold mb-4">Filter & Sort</h2>
 
-          {/* Mobile: row of 3 columns, Desktop: vertical */}
           <div className="flex flex-col lg:flex-col gap-4">
             <div className="flex flex-row gap-2 lg:flex-col">
               {/* Category */}
@@ -146,8 +144,8 @@ export const Reviews = () => {
         {/* Review Cards */}
         <ul className="listed-reviews grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr flex-1 order-2 lg:order-1">
           {category.map((review) => (
-            <li key={review.review_id} className="w-full flex">
-              <ReviewCard review={review} className="w-full h-full flex-1" />
+            <li key={review.review_id} className="w-full h-full">
+              <ReviewCard review={review} />
             </li>
           ))}
         </ul>
