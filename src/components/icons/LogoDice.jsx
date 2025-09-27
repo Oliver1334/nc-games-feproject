@@ -1,10 +1,8 @@
 import * as React from "react";
-const NDGLogoDice = ({ className, width = "100%", height = "auto", props }) => (
+const NDGLogoDice = ({ className, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 110 110"
-    width={width}
-    height={height}
     className={className}
     {...props}
   >
