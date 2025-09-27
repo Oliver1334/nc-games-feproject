@@ -58,7 +58,7 @@ export const Reviews = () => {
     });
   };
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading label="Fetching reviews..." />;
 
   return (
     <div className="bg-brandLight dark:bg-brandDark">
