@@ -58,22 +58,23 @@ export const Reviews = () => {
     });
   };
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading label="Fetching reviews..." />;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6">
+    <div className="bg-brandLight dark:bg-brandDark">
+    <div className="max-w-7xl mx-auto px-4 py-6 bg-brandLight dark:bg-brandDark">
       <div className="reviews flex flex-col lg:flex-row gap-6">
         {/* Sorting Menu */}
-        <aside className="w-full lg:w-72 bg-white p-4 rounded-xl shadow-md mb-6 lg:mb-0 order-1 lg:order-2 self-start">
-          <h2 className="text-xl font-semibold mb-4">Filter & Sort</h2>
+        <aside className="w-full lg:w-72 bg-brandLightSecondary dark:bg-brandSecondary p-4 rounded-xl shadow-md mb-6 lg:mb-0 order-1 lg:order-2 self-start">
+          <h2 className="text-xl font-semibold mb-4 text-brandLightText dark:text-brandPrimary">Filter & Sort</h2>
 
           <div className="flex flex-col lg:flex-col gap-4">
-            <div className="flex flex-row gap-2 lg:flex-col">
+            <div className="flex flex-row gap-2 lg:flex-col ">
               {/* Category */}
               <div className="flex-1">
                 <label
                   htmlFor="category-dropdown"
-                  className="block text-sm font-medium mb-1"
+                  className="block text-sm font-medium mb-1 text-brandLightText dark:text-brandPrimary"
                 >
                   Category
                 </label>
@@ -98,7 +99,7 @@ export const Reviews = () => {
               <div className="flex-1">
                 <label
                   htmlFor="sort-dropdown"
-                  className="block text-sm font-medium mb-1"
+                  className="block text-sm font-medium mb-1 text-brandLightText dark:text-brandPrimary"
                 >
                   Sort by
                 </label>
@@ -123,7 +124,7 @@ export const Reviews = () => {
               <div className="flex-1">
                 <label
                   htmlFor="order-dropdown"
-                  className="block text-sm font-medium mb-1"
+                  className="block text-sm font-medium mb-1 text-brandLightText dark:text-brandPrimary"
                 >
                   Order
                 </label>
@@ -150,6 +151,7 @@ export const Reviews = () => {
           ))}
         </ul>
       </div>
+    </div>
     </div>
   );
 };
