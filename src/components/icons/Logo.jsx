@@ -1,11 +1,9 @@
 import React from "react";
 
-const NDGLogoSVG = ({ className, width = "100%", height = "auto", props }) => (
+const NDGLogoSVG = ({ className = "", ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 680 110"
-    width={width}
-    height={height}
     className={className}
     {...props}
   >
