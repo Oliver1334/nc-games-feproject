@@ -1,21 +1,15 @@
-// src/components/icons/DiceLoader.jsx
 import React from "react";
 
-/**
- * Squares take color from the parent (via text-*).
- * Pips are light in light mode and dark in dark mode.
- */
 const DiceLoader = ({ size = 64, className = "" }) => (
   <svg
     role="img"
-    aria-label="Loading"
     viewBox="0 0 24 24"
     width={size}
     height={size}
     xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
-    {/* SQUARES use currentColor; color them with text-* on parent or on this <g> */}
+ 
     <g fill="currentColor" className="">
       {/* Square 1 */}
       <rect x="1" y="1" rx="1" width="10" height="10">
@@ -34,7 +28,6 @@ const DiceLoader = ({ size = 64, className = "" }) => (
       </rect>
     </g>
 
-    {/* PIPS use their own currentColor, which we control with text-brandLight / dark:text-brandDark */}
     <g fill="currentColor" className="text-brandLight dark:text-brandDark">
       {/* Pip for square 1 (center moves with square) */}
       <circle cx="6" cy="6" r="1.2">
