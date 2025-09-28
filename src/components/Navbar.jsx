@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiMoonClearLine, RiSunLine } from "react-icons/ri";
 import NDGLogoSVG from "./icons/Logo.jsx";
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const [nav, setNav] = useState(false);
+
+  // Optional: close menu on Escape
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setNav(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <header className="bg-brandLight dark:bg-brandDark">
@@ -16,12 +23,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               href="/"
             >
               <span className="sr-only">Home</span>
-              <NDGLogoSVG className="w-60 h-32 " />
+              <NDGLogoSVG className="w-60 h-32" />
             </a>
           </div>
 
-          {/* Navbar text buttons */}
+          {/* Right side controls */}
           <div className="md:flex md:items-center md:gap-12">
+            {/* Desktop nav */}
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
                 <li>
@@ -44,50 +52,80 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               </ul>
             </nav>
 
-            {/* Navbar box buttons */}
+            {/* Buttons */}
             <div className="flex items-center gap-4">
-              {/*Darkmode button*/}
-              <div className="gap-4">
+              {/* Dark mode */}
+              <button
+                onClick={toggleDarkMode}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                type="button"
+              >
+                {isDarkMode ? (
+                  <RiMoonClearLine className="h-5 w-5" />
+                ) : (
+                  <RiSunLine className="h-5 w-5" />
+                )}
+              </button>
+
+              {/* Login */}
+              <Link
+                to="/signin"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-brandPrimary px-5 text-sm font-medium text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+              >
+                Login
+              </Link>
+
+              {/* Mobile hamburger & dropdown */}
+              <div className="relative block md:hidden">
                 <button
-                  className=" bg-brandPrimary text-brandDark rounded-md px-2 py-2.5 text-sm cursor-pointer"
-                  onClick={toggleDarkMode}
+                  type="button"
+                  onClick={() => setNav((v) => !v)}
+                  aria-expanded={nav}
+                  aria-controls="mobile-menu"
+                  aria-label="Open navigation menu"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
                 >
-                  {isDarkMode ? (
-                    <RiMoonClearLine className="w-4 h-4" />
-                  ) : (
-                    <RiSunLine className="w-4 h-4" />
-                  )}
-                </button>
-              </div>
-
-              <div className="sm:flex sm:gap-4">
-                <Link
-                  className="rounded-md bg-brandPrimary px-5 py-2.5 text-sm font-medium text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
-                  to="/signin"
-                >
-                  Login
-                </Link>
-              </div>
-
-              {/* Hamburger */}
-              <div className="block md:hidden">
-                <button className="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
+                  {/* Simple SVG hamburger to keep bundle light */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="size-5"
-                    fill="none"
+                    className="h-5 w-5"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    fill="none"
                     strokeWidth="2"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
                   </svg>
                 </button>
+
+                {/* Dropdown */}
+                {nav && (
+                  <div
+                    id="mobile-menu"
+                    className="absolute right-0 mt-2 w-44 rounded-lg border border-black/5 bg-brandLight p-2 shadow-lg dark:border-white/10 dark:bg-brandDark"
+                    role="menu"
+                  >
+                    <a
+                      href="#"
+                      onClick={() => setNav(false)}
+                      className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
+                      role="menuitem"
+                    >
+                      About
+                    </a>
+                    <Link
+                      to="/reviews"
+                      onClick={() => setNav(false)}
+                      className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
+                      role="menuitem"
+                    >
+                      Reviews
+                    </Link>
+                  </div>
+                )}
               </div>
+              {/* End mobile hamburger */}
             </div>
           </div>
         </div>
