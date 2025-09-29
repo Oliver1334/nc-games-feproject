@@ -1,13 +1,59 @@
-import React from "react";
-import NDGLogoDice from "./icons/LogoDice";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import FeaturedHero from "./FeaturedHero";
+import { UserContext } from "../contexts/UserContext";
 import { Loading } from "./Loading";
 
 const LandingPage = () => {
+  const { user } = useContext(UserContext);
+
+  // Map your old slides to the new hero items
+  const items = [
+    {
+      id: 10,
+      title: "Super Rhino Hero",
+      href: "/reviews/10",
+      image: "https://images.pexels.com/photos/4691579/pexels-photo-4691579.jpeg?w=1200&h=800&auto=compress&cs=tinysrgb",
+      tag: "Review",
+    },
+    {
+      id: 8,
+      title: "Scythe; you're gonna need a bigger table!",
+      href: "/articles/8",
+      image: "https://images.pexels.com/photos/4200740/pexels-photo-4200740.jpeg?w=1200&h=800&auto=compress&cs=tinysrgb",
+      tag: "Feature",
+    },
+    {
+      id: 23,
+      title: "Escape The Dark Castle",
+      href: "/articles/23",
+      image: "https://images.pexels.com/photos/5439508/pexels-photo-5439508.jpeg?w=1200&h=800&auto=compress&cs=tinysrgb",
+      tag: "Review",
+    },
+    {
+      id: 6,
+      title: "Build your own Tour de Yorkshire",
+      href: "/articles/6",
+      image: "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg?w=1200&h=800&auto=compress&cs=tinysrgb",
+      tag: "Opinion",
+    },
+    {
+      id: 7,
+      title: "Build your own Tour de Yorkshire",
+      href: "/articles/7",
+      image: "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg?w=1200&h=800&auto=compress&cs=tinysrgb",
+      tag: "Opinion",
+    },
+  ];
+  
+
   return (
-    <div className="h-screen flex justify-center items-center bg-brandLight dark:bg-brandDark text-brandLightText dark:text-brandText">
-      {/* <h1>Landing Page</h1> */}
-      <Loading />
+    <main>
+      <FeaturedHero items={items} />
+      <div className="h-150 flex justify-center items-center bg-brandLight dark:bg-brandDark text-brandLightText dark:text-brandText">
+      
     </div>
+    </main>
   );
 };
 
