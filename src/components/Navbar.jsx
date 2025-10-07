@@ -1,20 +1,30 @@
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { RiMoonClearLine, RiSunLine } from "react-icons/ri";
 import NDGLogoSVG from "./icons/Logo.jsx";
+import { UserContext } from "../contexts/UserContext";
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
+  const { user, logout } = useContext(UserContext);
   const [nav, setNav] = useState(false);
-  const menuRef = useRef(null);   // wrapper for click-away close
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const userMenuRef = useRef(null);
+  const navigate = useNavigate();
 
-  // Close on Escape
+  // Close mobile menu on Escape
   useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && setNav(false);
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setNav(false);
+        setUserMenuOpen(false);
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Click-away close
+  // Click-away for mobile menu
   useEffect(() => {
     if (!nav) return;
     const onClickAway = (e) => {
@@ -25,20 +35,38 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     return () => document.removeEventListener("mousedown", onClickAway);
   }, [nav]);
 
+  // Click-away for user menu
+  useEffect(() => {
+    if (!userMenuOpen) return;
+    const onClickAway = (e) => {
+      if (!userMenuRef.current) return;
+      if (!userMenuRef.current.contains(e.target)) setUserMenuOpen(false);
+    };
+    document.addEventListener("mousedown", onClickAway);
+    return () => document.removeEventListener("mousedown", onClickAway);
+  }, [userMenuOpen]);
+
   const themeIcon = isDarkMode ? <RiMoonClearLine className="h-4 w-4" /> : <RiSunLine className="h-4 w-4" />;
   const themeLabel = isDarkMode ? "Switch to Light mode" : "Switch to Dark mode";
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <header className="bg-brandLight dark:bg-brandDark">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
+          {/* Left: Logo */}
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <a className="block text-brandLightText dark:text-brandText" href="/">
+            <Link className="block text-brandLightText dark:text-brandText" to="/">
               <span className="sr-only">Home</span>
               <NDGLogoSVG className="w-60 h-32" />
-            </a>
+            </Link>
           </div>
 
+          {/* Right */}
           <div className="md:flex md:items-center md:gap-6">
             {/* Desktop nav */}
             <nav aria-label="Global" className="hidden md:block">
@@ -64,25 +92,69 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
             {/* Buttons */}
             <div className="flex items-center gap-4">
-              {/* Dark mode — hidden < sm */}
+              {/* Dark mode toggle */}
               <button
                 onClick={toggleDarkMode}
                 className="hidden sm:inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
-                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                aria-label={themeLabel}
                 type="button"
               >
-                {isDarkMode ? <RiMoonClearLine className="h-5 w-5" /> : <RiSunLine className="h-5 w-5" />}
+                {themeIcon}
               </button>
 
-              {/* Login — hidden < sm */}
-              <Link
-                to="/signin"
-                className="hidden sm:inline-flex h-10 items-center justify-center rounded-md bg-brandPrimary px-5 text-sm font-medium text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
-              >
-                Login
-              </Link>
+              {/* ✅ Login vs User Avatar */}
+              {user?.username ? (
+  <div ref={userMenuRef} className="relative hidden sm:block">
+    <button
+      onClick={() => setUserMenuOpen((v) => !v)}
+      className="flex items-center h-10 rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary transition"
+    >
+      {/* Username on the left */}
+      <span className="px-3 text-sm font-medium truncate max-w-[100px]">
+        {user.username}
+      </span>
 
-              {/* Mobile hamburger & dropdown */}
+      {/* Avatar square on the right */}
+      <div className="h-10 w-10 flex items-center justify-center">
+        <img
+          src={user.avatar_url}
+          alt={user.username}
+          className="h-8 w-8 object-cover rounded-sm"
+        />
+      </div>
+    </button>
+
+    {/* Dropdown */}
+    {userMenuOpen && (
+      <div className="absolute right-0 mt-2 w-40 rounded-md bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700">
+        <Link
+          to="/account"
+          onClick={() => setUserMenuOpen(false)}
+          className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200"
+        >
+          My Account
+        </Link>
+        <button
+          onClick={handleLogout}
+          className="w-full text-left block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-red-600 dark:text-red-400"
+        >
+          Log Out
+        </button>
+      </div>
+    )}
+  </div>
+) : (
+  <Link
+    to="/signin"
+    className="hidden sm:inline-flex h-10 items-center justify-center rounded-md bg-brandPrimary px-5 text-sm font-medium text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+  >
+    Login
+  </Link>
+)}
+
+
+
+              {/* Mobile hamburger menu */}
               <div ref={menuRef} className="relative block md:hidden">
                 <button
                   type="button"
@@ -104,7 +176,6 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                   </svg>
                 </button>
 
-                {/* Dropdown (fixed to avoid clipping) */}
                 {nav && (
                   <div
                     id="mobile-menu"
@@ -130,7 +201,6 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
                     <div className="my-1 h-px bg-black/5 dark:bg-white/10" />
 
-                    {/* Theme toggle stays open; label updates immediately */}
                     <button
                       onClick={toggleDarkMode}
                       className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
@@ -141,14 +211,35 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                       <span>{themeLabel}</span>
                     </button>
 
-                    <Link
-                      to="/signin"
-                      onClick={() => setNav(false)}
-                      className="mt-1 block rounded-md bg-brandPrimary px-3 py-2 text-center text-sm font-medium text-brandDark hover:bg-brandSecondary dark:hover:bg-brandSecondary"
-                      role="menuitem"
-                    >
-                      Login
-                    </Link>
+                    {!user?.username ? (
+                      <Link
+                        to="/signin"
+                        onClick={() => setNav(false)}
+                        className="mt-1 block rounded-md bg-brandPrimary px-3 py-2 text-center text-sm font-medium text-brandDark hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+                        role="menuitem"
+                      >
+                        Login
+                      </Link>
+                    ) : (
+                      <>
+                        <Link
+                          to="/account"
+                          onClick={() => setNav(false)}
+                          className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
+                        >
+                          My Account
+                        </Link>
+                        <button
+                          onClick={() => {
+                            handleLogout();
+                            setNav(false);
+                          }}
+                          className="block w-full text-left rounded-md px-3 py-2 text-sm text-red-600 hover:bg-brandPrimary/10 dark:text-red-400 dark:hover:bg-brandPrimary/20"
+                        >
+                          Log Out
+                        </button>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
