@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import { Reviews } from "./components/ReviewList";
 import { SingleReview } from "./components/SingleReview";
 import { SignIn } from "./components/SignIn";
+import { AccountPage } from "./components/AccountPage"
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true); // false means light mode
@@ -34,6 +35,7 @@ function App() {
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/reviews/:review_id" element={<SingleReview />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/account" element={<AccountPage />} />
       </Routes>
 
       <Footer />
