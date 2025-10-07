@@ -51,7 +51,7 @@ const LandingPage = () => {
     <main>
       <FeaturedHero items={items} />
       <div className="h-150 flex justify-center items-center bg-brandLight dark:bg-brandDark text-brandLightText dark:text-brandText">
-      
+      {/* <Loading /> */}
     </div>
     </main>
   );
