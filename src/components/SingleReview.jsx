@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { getReviewById, voteForReview } from "../api";
 import { useState, useEffect } from "react";
-import { CommentList } from "./CommentList";
 import { Loading } from "./Loading";
+import CommentList from "./CommentList";
 
 export const SingleReview = () => {
   const { review_id } = useParams();
@@ -38,59 +38,52 @@ export const SingleReview = () => {
     votes,
   } = review;
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading label="Fetching review..." />;
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-8">
-      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden">
-        {/* Image */}
-        <div className="w-full h-72 overflow-hidden">
-          <img
-            src={review_img_url}
-            className="w-full h-full object-cover"
-            alt={title}
-          />
-        </div>
-
-        {/* Review Info */}
+      <article className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+        <img
+          src={review_img_url}
+          alt={title}
+          className="w-full max-h-96 object-cover"
+        />
         <div className="p-6">
-          <h3 className="text-3xl font-bold mb-3">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-1">
-            Category: <span className="font-medium">{category}</span>
+          <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+            {title}
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Category: {category} · Designer: {designer} · Reviewed by:{" "}
+            <span className="font-medium">{owner}</span>
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-1">
-            Designer: <span className="font-medium">{designer}</span>
-          </p>
-          <p className="text-gray-500 dark:text-gray-400 mb-4">
-            Reviewed by: {owner}
-          </p>
-
-          <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-800 dark:text-gray-200 mb-6 whitespace-pre-line">
             {review_body}
           </p>
 
-          {/* Votes */}
-          <h4 className="text-lg font-semibold mb-2">
-            Votes: {votes + userVote}
-          </h4>
-          <button
-            onClick={onClick}
-            disabled={userVote !== 0}
-            className={`px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${
-              userVote !== 0
-                ? "bg-gray-400 cursor-not-allowed text-white"
-                : "bg-blue-500 hover:bg-blue-600 text-white"
-            }`}
-          >
-            Vote
-          </button>
+          <div className="flex items-center gap-4">
+            <span className="text-gray-700 dark:text-gray-300 font-medium">
+              Votes: {votes + userVote}
+            </span>
+            <button
+              onClick={onClick}
+              disabled={userVote !== 0}
+              className={`px-4 py-2 rounded-md font-semibold transition-colors ${
+                userVote !== 0
+                  ? "bg-gray-400 cursor-not-allowed text-white"
+                  : "bg-blue-500 hover:bg-blue-600 text-white"
+              }`}
+            >
+              Vote
+            </button>
+          </div>
+
           {isVotingErr && (
-            <p className="text-red-600 mt-2 font-medium">Vote not applied!</p>
+            <p className="mt-2 text-red-500 font-medium">Vote not applied!</p>
           )}
         </div>
-      </div>
+      </article>
 
-      {/* Comments */}
+      {/* Comments Section */}
       <div className="mt-10">
         <CommentList review_id={review_id} />
       </div>

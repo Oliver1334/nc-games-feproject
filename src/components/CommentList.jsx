@@ -4,10 +4,10 @@ import {
   postCommentHandler,
   deleteCommentHandler,
 } from "../api";
-import { CommentCard } from "./CommentCard";
 import { UserContext } from "../contexts/UserContext";
+import CommentCard from "./CommentCard";
 
-export const CommentList = ({ review_id }) => {
+const CommentList = ({ review_id }) => {
   const { user, isLoggedIn } = useContext(UserContext);
   const [comments, setComments] = useState([]);
   const [inputComment, setInputComment] = useState("");
@@ -20,11 +20,7 @@ export const CommentList = ({ review_id }) => {
     const fetchComments = async () => {
       try {
         const data = await getCommentsById(review_id);
-        if (data && data.comments) {
-          setComments(data.comments);
-        } else {
-          setComments([]);
-        }
+        setComments(data?.comments || []);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching comments:", error);
@@ -36,13 +32,13 @@ export const CommentList = ({ review_id }) => {
     fetchComments();
   }, [review_id]);
 
-  const typeComment = (event) => {
+  const typeComment = (e) => {
     setCommentError(false);
-    setInputComment(event.target.value);
+    setInputComment(e.target.value);
   };
 
-  const submitComment = async (event) => {
-    event.preventDefault();
+  const submitComment = async (e) => {
+    e.preventDefault();
     if (!isLoggedIn) {
       setShowSignInMessage(true);
       return;
@@ -61,12 +57,7 @@ export const CommentList = ({ review_id }) => {
       setButtonDisabled(false);
       setInputComment("");
       if (Array.isArray(response) && response.length > 0) {
-        setComments((currentComments) => [response[0], ...currentComments]);
-      } else {
-        console.error(
-          "Invalid response format from postCommentHandler:",
-          response
-        );
+        setComments((prev) => [response[0], ...prev]);
       }
     } catch (error) {
       console.error("Failed to post comment:", error);
@@ -77,81 +68,73 @@ export const CommentList = ({ review_id }) => {
   const handleDelete = async (comment_id) => {
     try {
       await deleteCommentHandler(comment_id);
-      setComments((currentComments) =>
-        currentComments.filter((comment) => comment.comment_id !== comment_id)
-      );
+      setComments((prev) => prev.filter((c) => c.comment_id !== comment_id));
     } catch (error) {
       console.error("Failed to delete comment:", error);
     }
   };
 
   if (isLoading) {
-    return <p className="text-gray-600 dark:text-gray-300">Loading...</p>;
+    return <p className="text-gray-500 dark:text-gray-400">Loading comments...</p>;
   }
 
   return (
-    <div className="mt-6">
-      <h3 className="text-2xl font-bold mb-4">Comments</h3>
+    <div>
+      <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+        {comments.length} Comments
+      </h3>
 
-      {/* Post Comment Form */}
+      {/* Post Comment Box */}
       <form
-        id="post-comment"
         onSubmit={submitComment}
-        className="mb-6 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm"
+        className="mb-6 flex flex-col space-y-3 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm"
       >
-        <label
-          htmlFor="comment-box"
-          className="block text-gray-700 dark:text-gray-200 font-medium mb-2"
-        >
-          Join the Conversation!
-        </label>
         <textarea
-          id="comment-box"
-          onChange={typeComment}
+          placeholder="Add a comment..."
           value={inputComment}
-          className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+          onChange={typeComment}
           rows="3"
+          className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
         ></textarea>
-        <button
-          id="submit-comment"
-          type="submit"
-          disabled={buttonDisabled}
-          className={`mt-3 px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${
-            buttonDisabled
-              ? "bg-gray-400 cursor-not-allowed text-white"
-              : "bg-blue-500 hover:bg-blue-600 text-white"
-          }`}
-        >
-          {buttonDisabled ? "Please Wait..." : "Post a Comment"}
-        </button>
 
-        {/* Error / Sign-in Messages */}
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            disabled={buttonDisabled}
+            className={`px-4 py-2 rounded-md font-semibold transition-colors ${
+              buttonDisabled
+                ? "bg-gray-400 text-white cursor-not-allowed"
+                : "bg-blue-500 hover:bg-blue-600 text-white"
+            }`}
+          >
+            {buttonDisabled ? "Posting..." : "Comment"}
+          </button>
+        </div>
+
         {showSignInMessage && (
-          <p className="mt-3 text-red-600 font-medium">
+          <p className="text-red-600 text-sm">
             Please sign in to post a comment.
           </p>
         )}
         {commentError && (
-          <p className="mt-3 text-red-600 font-medium">
-            Comments must contain at least 2 characters. Please try again!
+          <p className="text-red-600 text-sm">
+            Comments must contain at least 2 characters.
           </p>
         )}
       </form>
 
-      {/* Comment List */}
-      <section id="comment-list">
-        <ul className="space-y-4">
-          {comments.map((comment) => (
-            <CommentCard
-              key={comment.comment_id}
-              comment={comment}
-              onDelete={user.username === comment.author ? handleDelete : null}
-            />
-          ))}
-        </ul>
-      </section>
+      {/* Comments List */}
+      <ul className="space-y-4">
+        {comments.map((comment) => (
+          <CommentCard
+            key={comment.comment_id}
+            comment={comment}
+            onDelete={user.username === comment.author ? handleDelete : null}
+          />
+        ))}
+      </ul>
     </div>
   );
 };
 
-
+export default CommentList;
