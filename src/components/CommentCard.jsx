@@ -1,40 +1,45 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
-export const CommentCard = ({ comment, onDelete }) => {
+const CommentCard = ({ comment, onDelete }) => {
   const { user } = useContext(UserContext);
 
-  if (!comment) {
-    return <li className="text-gray-500">Invalid Comment</li>;
-  }
+  if (!comment) return null;
 
   const { comment_id, body, author, votes } = comment;
 
   return (
     <li
       key={comment_id}
-      className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700"
+      className="flex space-x-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
     >
-      {/* Comment Body */}
-      <p className="text-gray-800 dark:text-gray-200 mb-2">{body}</p>
+      {/* Placeholder Avatar (you could add real avatars later) */}
+      <div className="flex-shrink-0 w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
 
-      {/* Author + Votes Row */}
-      <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
-        <span>Posted by: <span className="font-medium">{author}</span></span>
-        <span>Votes: {votes}</span>
+      {/* Comment Content */}
+      <div className="flex-1">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-semibold text-gray-800 dark:text-gray-100">
+            {author}
+          </span>
+          <span className="text-xs text-gray-500 dark:text-gray-400">
+            {votes} votes
+          </span>
+        </div>
+
+        <p className="text-gray-800 dark:text-gray-200 mt-1">{body}</p>
+
+        {user.username === author && (
+          <button
+            onClick={() => onDelete(comment_id)}
+            className="mt-2 text-xs text-red-500 hover:underline"
+          >
+            Delete
+          </button>
+        )}
       </div>
-
-      {/* Delete Button (only if author) */}
-      {user.username === author && (
-        <button
-          onClick={() => onDelete(comment_id)}
-          className="mt-2 px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-sm rounded-md transition-colors duration-200"
-        >
-          Delete
-        </button>
-      )}
     </li>
   );
 };
 
-
+export default CommentCard;
