@@ -81,7 +81,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 </li>
                 <li>
                   <Link
-                    className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
+                    className="text-brandLightText transition  dark:text-brandText hover:text-brandHighlight dark:hover:text-brandHighlight"
                     to="/reviews"
                   >
                     Reviews
@@ -95,7 +95,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               {/* Dark mode toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="hidden sm:inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+                className="hidden sm:inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandPrimaryDarker cursor-pointer transition-colors duration-250 "
                 aria-label={themeLabel}
                 type="button"
               >
@@ -107,7 +107,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   <div ref={userMenuRef} className="relative hidden sm:block">
     <button
       onClick={() => setUserMenuOpen((v) => !v)}
-      className="flex items-center h-10 rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary transition"
+      className="flex items-center h-10 rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandPrimaryDarker transition-colors duration-250 cursor-pointer"
     >
       {/* Username on the left */}
       <span className="px-3 text-sm font-medium truncate max-w-[100px]">
@@ -130,7 +130,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         <Link
           to="/account"
           onClick={() => setUserMenuOpen(false)}
-          className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200"
+          className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-brandPrimary dark:text-gray-200"
         >
           My Account
         </Link>
@@ -146,7 +146,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 ) : (
   <Link
     to="/signin"
-    className="hidden sm:inline-flex h-10 items-center justify-center rounded-md bg-brandPrimary px-5 text-sm font-medium text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+    className="hidden sm:inline-flex h-10 items-center justify-center rounded-md bg-brandPrimary px-5 text-sm font-medium text-brandDark shadow-sm hover:bg-brandPrimaryDarker transition-colors duration-250 "
   >
     Login
   </Link>
@@ -162,7 +162,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                   aria-expanded={nav}
                   aria-controls="mobile-menu"
                   aria-label="Open navigation menu"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandPrimaryDarker cursor-pointer transition-colors duration-250 "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +185,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     <a
                       href="#"
                       onClick={() => setNav(false)}
-                      className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
+                      className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20 transition-colors duration-250 "
                       role="menuitem"
                     >
                       About
@@ -193,7 +193,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     <Link
                       to="/reviews"
                       onClick={() => setNav(false)}
-                      className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
+                      className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20 transition-colors duration-250 "
                       role="menuitem"
                     >
                       Reviews
@@ -203,7 +203,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
                     <button
                       onClick={toggleDarkMode}
-                      className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
+                      className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20 transition-colors duration-250 cursor-pointer"
                       role="menuitem"
                       aria-label={themeLabel}
                     >
@@ -215,7 +215,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                       <Link
                         to="/signin"
                         onClick={() => setNav(false)}
-                        className="mt-1 block rounded-md bg-brandPrimary px-3 py-2 text-center text-sm font-medium text-brandDark hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+                        className="mt-1 block rounded-md bg-brandPrimary px-3 py-2 text-center text-sm font-medium text-brandDark hover:bg-brandPrimaryDarker transition-colors duration-250 "
                         role="menuitem"
                       >
                         Login
@@ -225,7 +225,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                         <Link
                           to="/account"
                           onClick={() => setNav(false)}
-                          className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20"
+                          className="block rounded-md px-3 py-2 text-sm text-brandLightText hover:bg-brandPrimary/10 dark:text-brandText dark:hover:bg-brandPrimary/20 transition-colors duration-250"
                         >
                           My Account
                         </Link>
@@ -234,7 +234,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                             handleLogout();
                             setNav(false);
                           }}
-                          className="block w-full text-left rounded-md px-3 py-2 text-sm text-red-600 hover:bg-brandPrimary/10 dark:text-red-400 dark:hover:bg-brandPrimary/20"
+                          className="block w-full text-left rounded-md px-3 py-2 text-sm text-red-600 hover:bg-brandPrimary/10 dark:text-red-400 dark:hover:bg-brandPrimary/20 transition-colors duration-250 cursor-pointer"
                         >
                           Log Out
                         </button>
