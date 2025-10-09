@@ -82,7 +82,7 @@ export const Reviews = () => {
                   id="category-dropdown"
                   value={selectedCategory}
                   onChange={handleCategoryChange}
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-brandLight border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brandPrimary/70 cursor-pointer"
                 >
                   <option value="All">All</option>
                   <option value="strategy">Strategy</option>
@@ -99,7 +99,7 @@ export const Reviews = () => {
               <div className="flex-1">
                 <label
                   htmlFor="sort-dropdown"
-                  className="block text-sm font-medium mb-1 text-brandLightText dark:text-brandPrimary"
+                  className="block text-sm font-medium mb-1 text-brandLightText dark:text-brandPrimary "
                 >
                   Sort by
                 </label>
@@ -107,7 +107,7 @@ export const Reviews = () => {
                   id="sort-dropdown"
                   value={sort}
                   onChange={handleSortChange}
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-brandLight border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brandPrimary/70 cursor-pointer"
                 >
                   <option value="created_at">Date Created</option>
                   <option value="comment_count">Comment Count</option>
@@ -132,7 +132,7 @@ export const Reviews = () => {
                   id="order-dropdown"
                   value={order}
                   onChange={handleOrderChange}
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-brandLight border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brandPrimary/70 cursor-pointer"
                 >
                   <option value="ASC">Ascending</option>
                   <option value="DESC">Descending</option>

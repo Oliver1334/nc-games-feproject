@@ -4,18 +4,29 @@
 
 
 @theme {
-  --color-brandDark: #0C0703;
+  --color-brandDark: #0C0703;  
   --color-brandText: #F0E9E3;
   --color-brandHighlight: #938D88;
   --color-brandPrimary: #FF7B00;
-  --color-brandSecondary: #3E3B2C;
+  --color-brandSecondary: #17130e;
   --color-brandAccent: #C9C2BA;
+
+  /* --color-brandSecondary: #261F17; */
+
+  --color-brandPrimaryDarker: #CC6300;
+
+  /* --color-brandPrimaryDarker: #3d1f02; */
+
+
+  --color-brandOldSecondary: #3E3B2C;
 
 
   --color-brandLight: #FCF7F3;
   --color-brandLightText: #1B140E;
-  --color-brandLightSecondary: #D2CDC8;
+  --color-brandLightSecondary: #e8e1d9;
   --color-brandLightAccent: #453E36;
+
+  --color-brandLightOldSecondary: #D2CDC8;
 }
 
 
