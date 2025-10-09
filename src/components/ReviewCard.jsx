@@ -54,7 +54,7 @@ export const ReviewCard = ({ review }) => {
 
         {/* Button stays at bottom because flex-1 above grows */}
         <Link to={`/reviews/${review_id}`} className="mt-auto">
-          <button className="w-full bg-brandPrimary hover:bg-brandPrimaryDarker text-brandLightText  py-2 px-4 rounded-md transition-colors duration-400 cursor-pointer">
+          <button className="w-full bg-brandPrimary hover:bg-brandPrimaryDarker text-brandLightText  py-2 px-4 rounded-md transition-colors duration-250 cursor-pointer">
             Read Review
           </button>
         </Link>
