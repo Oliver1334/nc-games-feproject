@@ -25,7 +25,7 @@ export const ReviewCard = ({ review }) => {
   } = review;
 
   return (
-    <article className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+    <article className="bg-brandLightSecondary dark:bg-brandSecondary shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
       <img
         src={review_img_url}
         alt={title}
@@ -34,27 +34,27 @@ export const ReviewCard = ({ review }) => {
 
       {/* Top content grows to push the button to bottom */}
       <div className="p-4 flex-1 flex flex-col">
-        <h3 className="text-brandPrimary text-xl font-semibold mb-2">{title}</h3>
+        <h3 className="text-brandLightText dark:text-brandPrimary text-xl font-semibold mb-2">{title}</h3>
 
-        <p className="text-gray-700 dark:text-gray-300 mb-2 flex-1">
+        <p className="text-brandLightText dark:text-brandText mb-2 flex-1">
           {title.length < 48 ? previewReview : previewShortReview}
         </p>
 
-        <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+        <div className="text-sm text-brandLightText dark:text-brandText mb-2">
           <p>Review by: {owner}</p>
           <p>Designer: {designer}</p>
           <p>Category: {category}</p>
           <p>Posted on: {formattedDate}</p>
         </div>
 
-        <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-4">
+        <div className="flex justify-between text-sm text-brandLightText dark:text-brandText mb-4">
           <p>Votes: {votes}</p>
           <p>Comments: {comment_count}</p>
         </div>
 
         {/* Button stays at bottom because flex-1 above grows */}
         <Link to={`/reviews/${review_id}`} className="mt-auto">
-          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition-colors duration-200">
+          <button className="w-full bg-brandPrimary hover:bg-brandPrimaryDarker text-brandLightText  py-2 px-4 rounded-md transition-colors duration-400 cursor-pointer">
             Read Review
           </button>
         </Link>
