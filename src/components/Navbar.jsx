@@ -81,7 +81,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 </li>
                 <li>
                   <Link
-                    className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
+                    className="text-brandLightText transition  dark:text-brandText hover:text-brandHighlight dark:hover:text-brandHighlight"
                     to="/reviews"
                   >
                     Reviews
@@ -95,7 +95,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               {/* Dark mode toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="hidden sm:inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandSecondary dark:hover:bg-brandSecondary"
+                className="hidden sm:inline-flex h-10 w-10 items-center justify-center rounded-md bg-brandPrimary text-brandDark shadow-sm hover:bg-brandPrimaryDarker cursor-pointer"
                 aria-label={themeLabel}
                 type="button"
               >

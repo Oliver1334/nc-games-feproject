@@ -48,10 +48,10 @@ const LandingPage = () => {
   
 
   return (
-    <main>
+    <main className="bg-brandLight dark:bg-brandDark">
       <FeaturedHero items={items} />
-      <div className="h-150 flex justify-center items-center bg-brandLight dark:bg-brandDark text-brandLightText dark:text-brandText">
-      {/* <Loading /> */}
+      <div className="h-110 bg-brandLight dark:bg-brandDark ">
+      {/* Extra page Space div*/}
     </div>
     </main>
   );
