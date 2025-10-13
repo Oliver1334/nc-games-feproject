@@ -71,7 +71,7 @@ export const SingleReview = () => {
               className={`px-4 py-2 rounded-md font-semibold transition-colors duration-250  ${
                 userVote !== 0
                   ? "bg-gray-400 cursor-not-allowed text-white"
-                  : "bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker"
+                  : "bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker cursor-pointer"
               }`}
             >
               Vote

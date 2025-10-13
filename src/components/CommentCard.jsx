@@ -1,12 +1,21 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { signInHandler } from "../api";
 
 const CommentCard = ({ comment, onDelete }) => {
   const { user } = useContext(UserContext);
+  const [authorPicture, setAuthorPicture] = useState("");
 
   if (!comment) return null;
 
   const { comment_id, body, author, votes } = comment;
+
+  signInHandler(author).then((users) => {
+    const commentAuthor = users.find((user) => user.username === author);
+    console.log("Comment Author >", commentAuthor.avatar_url)
+    setAuthorPicture(commentAuthor.avatar_url)
+  })
+
 
   return (
     <li
@@ -14,7 +23,13 @@ const CommentCard = ({ comment, onDelete }) => {
       className="flex space-x-3 bg-brandLightSecondary dark:bg-brandSecondary p-4 rounded-lg shadow-sm "
     >
       {/* Placeholder Avatar (you could add real avatars later) */}
-      <div className="flex-shrink-0 w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+      <div className="flex-shrink-0 w-10 h-10 rounded-lg overflow-hidden ">
+  <img
+    src={authorPicture}
+    alt={author}
+    className="w-10 h-10 object-cover rounded-lg border-2 border-brandPrimary"
+  />
+</div>
 
       {/* Comment Content */}
       <div className="flex-1">

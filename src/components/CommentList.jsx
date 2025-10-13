@@ -104,7 +104,7 @@ const CommentList = ({ review_id }) => {
             className={`px-4 py-2 rounded-md font-semibold transition-colors ${
               buttonDisabled
                 ? "bg-gray-400 text-white cursor-not-allowed"
-                : "bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker"
+                : "bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker cursor-pointer"
             }`}
           >
             {buttonDisabled ? "Posting..." : "Comment"}
