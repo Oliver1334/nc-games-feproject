@@ -215,7 +215,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                       <Link
                         to="/signin"
                         onClick={() => setNav(false)}
-                        className="mt-1 block rounded-md bg-brandPrimary px-3 py-2 text-center text-sm font-medium text-brandDark hover:bg-brandPrimaryDarker transition-colors duration-250 "
+                        className="mt-1 block rounded-md  px-3 py-2 text-center text-sm font-medium bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker transition-colors duration-250 "
                         role="menuitem"
                       >
                         Login
