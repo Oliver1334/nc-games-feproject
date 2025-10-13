@@ -11,7 +11,7 @@ const CommentCard = ({ comment, onDelete }) => {
   return (
     <li
       key={comment_id}
-      className="flex space-x-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+      className="flex space-x-3 bg-brandLightSecondary dark:bg-brandSecondary p-4 rounded-lg shadow-sm "
     >
       {/* Placeholder Avatar (you could add real avatars later) */}
       <div className="flex-shrink-0 w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
@@ -19,15 +19,15 @@ const CommentCard = ({ comment, onDelete }) => {
       {/* Comment Content */}
       <div className="flex-1">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold text-gray-800 dark:text-gray-100">
+          <span className="text-sm font-semibold text-brandLightText dark:text-brandPrimary">
             {author}
           </span>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
+          <span className="text-xs text-brandLightText dark:text-brandText">
             {votes} votes
           </span>
         </div>
 
-        <p className="text-gray-800 dark:text-gray-200 mt-1">{body}</p>
+        <p className="text-brandLightText dark:text-brandText mt-1">{body}</p>
 
         {user.username === author && (
           <button
