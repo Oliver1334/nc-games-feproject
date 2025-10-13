@@ -80,21 +80,21 @@ const CommentList = ({ review_id }) => {
 
   return (
     <div>
-      <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+      <h3 className="text-xl font-bold mb-4 text-brandLightText dark:text-brandPrimary">
         {comments.length} Comments
       </h3>
 
       {/* Post Comment Box */}
       <form
         onSubmit={submitComment}
-        className="mb-6 flex flex-col space-y-3 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm"
+        className="mb-6 flex flex-col space-y-3 bg-brandLightSecondary dark:bg-brandSecondary p-4 rounded-lg shadow-sm"
       >
         <textarea
           placeholder="Add a comment..."
           value={inputComment}
           onChange={typeComment}
           rows="3"
-          className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          className="w-full p-3 border border-gray-300 rounded-md resize-none focus:ring-2 focus:ring-brandPrimary/70 focus:outline-none bg-brandLight  text-brandLightText"
         ></textarea>
 
         <div className="flex justify-end">
@@ -104,7 +104,7 @@ const CommentList = ({ review_id }) => {
             className={`px-4 py-2 rounded-md font-semibold transition-colors ${
               buttonDisabled
                 ? "bg-gray-400 text-white cursor-not-allowed"
-                : "bg-blue-500 hover:bg-blue-600 text-white"
+                : "bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker"
             }`}
           >
             {buttonDisabled ? "Posting..." : "Comment"}

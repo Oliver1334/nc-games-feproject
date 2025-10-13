@@ -41,36 +41,37 @@ export const SingleReview = () => {
   if (loading) return <Loading label="Fetching review..." />;
 
   return (
-    <section className="max-w-4xl mx-auto px-4 py-8">
-      <article className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+    <div className="bg-brandLight dark:bg-brandDark">
+    <section className="max-w-4xl mx-auto px-4 py-8 ">
+      <article className="bg-brandLightSecondary dark:bg-brandSecondary rounded-lg shadow-md overflow-hidden">
         <img
           src={review_img_url}
           alt={title}
           className="w-full max-h-96 object-cover"
         />
         <div className="p-6">
-          <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold mb-2 text-brandLightText dark:text-brandPrimary">
             {title}
           </h2>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-sm text-brandLightText dark:text-brandText mb-4">
             Category: {category} · Designer: {designer} · Reviewed by:{" "}
             <span className="font-medium">{owner}</span>
           </p>
-          <p className="text-gray-800 dark:text-gray-200 mb-6 whitespace-pre-line">
+          <p className="text-brandLightText dark:text-brandText mb-6 whitespace-pre-line">
             {review_body}
           </p>
 
           <div className="flex items-center gap-4">
-            <span className="text-gray-700 dark:text-gray-300 font-medium">
+            <span className="text-brandLightText dark:text-brandPrimary font-medium">
               Votes: {votes + userVote}
             </span>
             <button
               onClick={onClick}
               disabled={userVote !== 0}
-              className={`px-4 py-2 rounded-md font-semibold transition-colors ${
+              className={`px-4 py-2 rounded-md font-semibold transition-colors duration-250  ${
                 userVote !== 0
                   ? "bg-gray-400 cursor-not-allowed text-white"
-                  : "bg-blue-500 hover:bg-blue-600 text-white"
+                  : "bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker"
               }`}
             >
               Vote
@@ -88,5 +89,7 @@ export const SingleReview = () => {
         <CommentList review_id={review_id} />
       </div>
     </section>
+
+    </div>
   );
 };
