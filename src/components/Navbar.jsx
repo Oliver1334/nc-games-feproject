@@ -115,7 +115,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
       </span>
 
       {/* Avatar square on the right */}
-      <div className="h-10 w-10 flex items-center justify-center">
+      <div className="flex-shrink-0 h-10 w-10 flex items-center justify-center overflow-hidden">
         <img
           src={user.avatar_url}
           alt={user.username}
