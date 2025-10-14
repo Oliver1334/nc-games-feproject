@@ -47,47 +47,37 @@ export const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+    <div className="min-h-screen flex items-start pt-25 justify-center  bg-brandLight dark:bg-brandDark">
+      <div className="w-full max-w-md bg-brandLightSecondary dark:bg-brandSecondary rounded-2xl shadow-lg p-6">
         <header className="mb-6 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Welcome!</h3>
-          <p className="mt-1 text-gray-600 dark:text-gray-300">Login to your account</p>
+          <h3 className="text-2xl font-bold text-brandLightText dark:text-brandPrimary">Welcome</h3>
+          <p className="mt-1 text-brandLightText dark:text-brandText">Login to your account</p>
         </header>
 
         <form className="space-y-5" id="signin" onSubmit={signInButton} noValidate>
           {/* Username */}
           <div>
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
-            >
-              Username
-            </label>
+           
             <input
               id="username"
               placeholder="Username"
               value={inputUsername}
               onChange={usernameHandler}
               required
-              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brandPrimary/70"
+              className="w-full rounded-md border border-gray-300 bg-brandLight text-brandLightText dark:brandText px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brandPrimary/70"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
-            >
-              Password
-            </label>
+           
             <input
               id="password"
               placeholder="Password"
               onChange={passwordHandler}
               type="password"
               required
-              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brandPrimary/70"
+              className="w-full rounded-md border border-gray-300 bg-brandLight text-brandLightText dark:brandText px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brandPrimary/70"
             />
           </div>
 
@@ -95,10 +85,10 @@ export const SignIn = () => {
           <button
             type="submit"
             disabled={loadSignin}
-            className={`w-full inline-flex items-center justify-center rounded-md px-4 py-2.5 font-semibold transition-colors
+            className={`w-full inline-flex items-center justify-center rounded-md px-4 py-2.5  transition-colors
               ${loadSignin
                 ? "bg-gray-400 text-white cursor-not-allowed"
-                : "bg-brandPrimary text-brandDark hover:bg-brandSecondary hover:text-brandText"
+                : "bg-brandPrimary text-brandDark hover:bg-brandPrimaryDarker cursor-pointer duration-250"
               }`}
           >
             {loadSignin ? "Signing in..." : "Sign In"}
