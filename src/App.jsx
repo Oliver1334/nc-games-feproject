@@ -8,6 +8,7 @@ import { Reviews } from "./components/ReviewList";
 import { SingleReview } from "./components/SingleReview";
 import { SignIn } from "./components/SignIn";
 import { AccountPage } from "./components/AccountPage"
+import { WelcomeModal } from "./components/WelcomeModal";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true); // false means light mode
@@ -29,7 +30,7 @@ function App() {
     < >
 
       <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-
+      <WelcomeModal />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/reviews" element={<Reviews />} />
