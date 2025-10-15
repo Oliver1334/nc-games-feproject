@@ -9,6 +9,7 @@ import { SingleReview } from "./components/SingleReview";
 import { SignIn } from "./components/SignIn";
 import { AccountPage } from "./components/AccountPage"
 import { WelcomeModal } from "./components/WelcomeModal";
+import { About } from "./components/About";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true); // false means light mode
@@ -33,6 +34,7 @@ function App() {
       <WelcomeModal />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<About />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/reviews/:review_id" element={<SingleReview />} />
         <Route path="/signin" element={<SignIn />} />

@@ -72,12 +72,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
                 <li>
-                  <a
+                  <Link
                     className="text-brandLightText transition hover:text-brandHighlight dark:text-brandText dark:hover:text-brandHighlight"
-                    href="#"
+                    to="/about"
                   >
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link
