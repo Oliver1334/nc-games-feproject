@@ -3,29 +3,25 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 export const WelcomeModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showContent, setShowContent] = useState(false); // for fade-in timing
+  const [showContent, setShowContent] = useState(false);
   const modalRef = useRef(null);
 
-  // Show modal on first visit (localStorage flag)
   useEffect(() => {
     const hasSeenModal = localStorage.getItem("hasSeenModal");
     if (!hasSeenModal) {
       setIsOpen(true);
-      // Delay to allow transition to trigger cleanly
       setTimeout(() => setShowContent(true), 10);
     }
   }, []);
 
-  // Keep the same close logic you had (animation -> unmount -> set localStorage)
   const handleClose = useCallback(() => {
     setShowContent(false);
     setTimeout(() => {
       setIsOpen(false);
       localStorage.setItem("hasSeenModal", "true");
-    }, 200); // match transition duration
+    }, 200);
   }, []);
 
-  // Click outside & Escape key handling
   useEffect(() => {
     if (!isOpen) return;
 
@@ -34,7 +30,6 @@ export const WelcomeModal = () => {
     };
 
     const onClickAway = (e) => {
-      // If click is outside the modal content, close
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         handleClose();
       }
@@ -76,13 +71,12 @@ export const WelcomeModal = () => {
 
         {/* Modal Content */}
         <h2 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">
-          Welcome 👋
+          Welcome to No Dice Games
         </h2>
+
         <p className="text-gray-700 dark:text-gray-300 mb-4">
-          This is a demo board game reviews site built for my portfolio. You can
-          browse reviews, post comments, and interact like a real app.
-          <br />
-          Feel free to log in using one of the demo accounts below. All use the
+          Feel free to log in using one of the demo accounts below to access
+          their account page and comment on reviews. All use the
           password:{" "}
           <span className="font-mono bg-gray-100 dark:bg-gray-700 px-1 rounded">
             password
@@ -92,20 +86,21 @@ export const WelcomeModal = () => {
 
         <div className="mb-4">
           <h3 className="font-semibold mb-1 text-gray-800 dark:text-gray-200">
-            Demo Users:
+            Available Demo Users:
           </h3>
           <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
-            <li>
-              <span className="font-mono">cooluser</span>
-            </li>
-            <li>
-              <span className="font-mono">boardgamer</span>
-            </li>
-            <li>
-              <span className="font-mono">testuser</span>
-            </li>
+            <li><span className="font-mono">tickle122</span></li>
+            <li><span className="font-mono">grumpy19</span></li>
+            <li><span className="font-mono">happyamy2016</span></li>
+            <li><span className="font-mono">cooljmessy</span></li>
+            <li><span className="font-mono">weegembump</span></li>
+            <li><span className="font-mono">jessjelly</span></li>
           </ul>
         </div>
+
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          More information can be found in the "About" section of the website.
+        </p>
 
         <button
           onClick={handleClose}
