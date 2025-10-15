@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FeaturedHero from "./FeaturedHero";
 import { UserContext } from "../contexts/UserContext";
@@ -6,6 +6,12 @@ import { Loading } from "./Loading";
 
 const LandingPage = () => {
   const { user } = useContext(UserContext);
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setFadeIn(true), 50); // small delay for fade
+    return () => clearTimeout(timeout);
+  }, []);
 
   // Map your old slides to the new hero items
   const items = [
@@ -49,10 +55,17 @@ const LandingPage = () => {
 
   return (
     <main className="bg-brandLight dark:bg-brandDark">
-      <FeaturedHero items={items} />
-      <div className="h-110 bg-brandLight dark:bg-brandDark ">
-      {/* Extra page Space div*/}
-    </div>
+      {/* Fade wrapper for content only */}
+      <div
+        className={`transition-opacity duration-700 ${
+          fadeIn ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <FeaturedHero items={items} />
+        <div className="h-110">
+          {/* Extra page space div */}
+        </div>
+      </div>
     </main>
   );
 };
