@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    < >
+    <  >
 
       <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <WelcomeModal />
