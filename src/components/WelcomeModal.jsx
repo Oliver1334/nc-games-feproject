@@ -78,14 +78,14 @@ export const WelcomeModal = () => {
           Feel free to log in using one of the demo accounts below to access
           their account page and comment on reviews. All use the
           password:{" "}
-          <span className="font-mono bg-gray-100 dark:bg-brandSecondary px-1 rounded">
+          <span className="font-mono bg-brandPrimary/40 px-1 rounded">
             password
           </span>
           .
         </p>
 
         <div className="mb-4">
-          <h3 className="font-semibold mb-1 text-brandText">
+          <h3 className="font-semibold mb-1 text-brandPrimary">
             Available Demo Users:
           </h3>
           <ul className="list-disc list-inside text-brandText">
