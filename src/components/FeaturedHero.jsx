@@ -49,7 +49,7 @@ export default function FeaturedHero({ items = [] }) {
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4 bg-brandPrimary px-3 py-1 rounded-md shadow text-sm font-semibold tracking-wide text-brandLightText">
-                  Featured Reviews
+                  Featured Review
                 </div>
               </div>
               <h2 className="mt-4 text-2xl font-bold leading-tight hover:text-brandHighlight dark:hover:text-brandHighlight text-brandLightText dark:text-brandText">

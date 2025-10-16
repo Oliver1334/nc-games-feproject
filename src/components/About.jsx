@@ -10,7 +10,9 @@ export const About = () => {
   }, []);
 
   return (
-    <section className="bg-brandLight dark:bg-brandDark max-w-5xl mx-auto px-4 py-12 space-y-12">
+    <main className="bg-brandLight dark:bg-brandDark ">
+
+    <section className="max-w-5xl mx-auto px-4 py-12 space-y-12">
       {/* Fade wrapper for content only */}
       <div
         className={`transition-opacity duration-700 ${
@@ -18,18 +20,17 @@ export const About = () => {
         }`}
       >
         {/* Header */}
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100">
+        <div className="text-center space-y-4 ">
+          <h1 className="text-4xl font-extrabold text-brandLightText dark:text-brandPrimary">
             About NDG
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Discover, interact, and share your thoughts on your favorite board
-            games — all in one place.
+          <p className="text-lg text-brandLightText dark:text-brandText  max-w-2xl mx-auto">
+            Discover, interact, and share your thoughts on your favorite board games.
           </p>
         </div>
 
         {/* Full-width Image (smaller height) */}
-        <div>
+        <div className="pt-3 pb-8">
           <img
             src={aboutPhoto}
             alt="NDG Screenshot"
@@ -38,40 +39,41 @@ export const About = () => {
         </div>
 
         {/* Text Content */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           {/* Introduction */}
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-brandLightText dark:text-brandText  leading-relaxed">
             Welcome to <span className="font-semibold">No Dice Games</span> (NDG),
             a board game review aggregation website built using{" "}
             <span className="font-semibold">React.js</span>.
           </p>
 
           {/* Key Features */}
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="pb-6">
+            <h2 className="text-xl font-semibold text-brandLightText dark:text-brandPrimary mb-2">
               Key Features
             </h2>
-            <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-              <li>🎲 View all articles, or view articles by topic</li>
-              <li>🎲 Filter, sort and/or order reviews</li>
-              <li>🎲 View, post & delete review comments</li>
-              <li>🎲 Upvote a review</li>
-              <li>🎲 Optimised for both mobile and desktop responsiveness</li>
+            <ul className="list-disc list-inside space-y-1 text-brandLightText dark:text-brandText ">
+              <li>View all reviews and a single review</li>
+              <li>Filter, sort and/or order reviews</li>
+              <li>View, post & delete review comments</li>
+              <li>Upvote a review</li>
+              <li>Login as an NDG user with an account page</li>
+              <li>Optimised for both mobile and desktop responsiveness</li>
             </ul>
           </div>
 
           {/* Demo Login */}
           <div>
-            <p className="text-gray-700 dark:text-gray-300 mb-2">
+            <p className="text-brandLightText dark:text-brandText  mb-2">
               Feel free to log in using one of the demo accounts below to access their account page and comment on reviews. All use the password:{" "}
-              <span className="font-mono bg-gray-100 dark:bg-gray-700 px-1 rounded">
+              <span className="font-mono bg-brandPrimary/40 dark:bg-brandPrimary/40 px-1 rounded">
                 password
               </span>.
             </p>
-            <h3 className="font-semibold mb-1 text-gray-800 dark:text-gray-200">
+            <h3 className="font-semibold mb-1 text-brandLightText dark:text-brandPrimary">
               Available Demo Users:
             </h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+            <ul className="list-disc list-inside text-brandLightText dark:text-brandText ">
               <li><span className="font-mono">tickle122</span></li>
               <li><span className="font-mono">grumpy19</span></li>
               <li><span className="font-mono">happyamy2016</span></li>
@@ -82,24 +84,25 @@ export const About = () => {
           </div>
 
           {/* Backend Note */}
-          <p className="text-gray-700 dark:text-gray-300">
-            Please note the backend is hosted on Render's free-tier, so it may take a few seconds to load!
+          <p className="text-brandLightText dark:text-brandText ">
+            Please note that the backend is hosted on Render's free-tier, so it may take a few seconds to load reviews!
           </p>
 
           {/* Other Projects */}
-          <p className="text-gray-700 dark:text-gray-300">
+          <p className="text-brandLightText dark:text-brandText ">
             Explore my other projects at{" "}
             <a
-              href="https://oliver.taylor-dev"
+              href="https://olivertaylor-dev.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-brandPrimary hover:underline"
             >
-              oliver.taylor-dev
+              olivertaylor-dev
             </a>.
           </p>
         </div>
       </div>
     </section>
+    </main>
   );
 };
