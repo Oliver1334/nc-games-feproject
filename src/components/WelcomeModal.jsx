@@ -56,39 +56,39 @@ export const WelcomeModal = () => {
         ref={modalRef}
         role="dialog"
         aria-modal="true"
-        className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-lg w-full mx-4 p-6 relative transform transition-all duration-300 ${
+        className={`bg-brandLight dark:bg-brandSecondary rounded-lg shadow-lg max-w-lg w-full mx-4 p-6 relative transform transition-all duration-300 ${
           showContent ? "opacity-100 scale-100" : "opacity-0 scale-95"
         }`}
       >
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 dark:hover:text-gray-300 text-xl"
+          className="absolute top-3 right-3 text-brandText hover:text-brandHighlight text-xl cursor-pointer"
           aria-label="Close welcome modal"
         >
           ✕
         </button>
 
         {/* Modal Content */}
-        <h2 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+        <h2 className="text-2xl font-bold mb-3 text-center text-brandPrimary">
           Welcome to No Dice Games
         </h2>
 
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
+        <p className="text-brandText mb-4 ">
           Feel free to log in using one of the demo accounts below to access
           their account page and comment on reviews. All use the
           password:{" "}
-          <span className="font-mono bg-gray-100 dark:bg-gray-700 px-1 rounded">
+          <span className="font-mono bg-gray-100 dark:bg-brandSecondary px-1 rounded">
             password
           </span>
           .
         </p>
 
         <div className="mb-4">
-          <h3 className="font-semibold mb-1 text-gray-800 dark:text-gray-200">
+          <h3 className="font-semibold mb-1 text-brandText">
             Available Demo Users:
           </h3>
-          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+          <ul className="list-disc list-inside text-brandText">
             <li><span className="font-mono">tickle122</span></li>
             <li><span className="font-mono">grumpy19</span></li>
             <li><span className="font-mono">happyamy2016</span></li>
@@ -98,13 +98,13 @@ export const WelcomeModal = () => {
           </ul>
         </div>
 
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
+        <p className="text-brandText mb-4">
           More information can be found in the "About" section of the website.
         </p>
 
         <button
           onClick={handleClose}
-          className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition"
+          className="mt-2 w-full bg-brandPrimary py-2 rounded-md transition text-brandDark shadow-sm hover:bg-brandPrimaryDarker transition-colors duration-250 cursor-pointer"
         >
           Got it!
         </button>
